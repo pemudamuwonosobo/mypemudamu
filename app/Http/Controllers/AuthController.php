@@ -45,7 +45,7 @@ class AuthController extends Controller
                 $email = Auth::user()->email;
                 $anggota = Anggota::where('email', $email)->first();
 
-                if ($anggota && $anggota->akun == '2') {
+                if ($anggota && $anggota->akun == 1) {
                     Auth::logout();
                     return redirect('/login')->withErrors(['error' => 'Akun anda belum aktif. Silakan menghubungi admin cabang.']);
                 } else {
