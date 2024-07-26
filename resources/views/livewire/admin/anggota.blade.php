@@ -675,7 +675,9 @@
                                                {{ $value->akun == 2 ? 'bg-teal-400 btn-labeled btn-labeled-right' : '' }}
                                                {{ $value->akun == 1 ? 'bg-danger-400 btn-labeled btn-labeled-left' : '' }}
                                                rounded-round">
-                                        <b><i class="icon-switch"></i></b>
+                                        <b>
+                                            <i class="icon-switch"></i>
+                                        </b>
                                         <span
                                             class="text {{ $value->akun == 2 ? 'text-teal-400' : '' }} {{ $value->akun == 1 ? 'text-danger-400' : '' }}">&nbsp;</span>
 
