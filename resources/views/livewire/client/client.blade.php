@@ -1,7 +1,8 @@
 <div>
     <div class="col-md-12">
         <div class="profile-cover">
-            <div class="profile-cover-img" style="background-image: url('{{ $bannerImage }}')"></div>
+            <div class="profile-cover-img" style="background-image: url('{{ asset('Assets/banner/banner1.jpg') }}');">
+            </div>
             <div class="media align-items-center text-center text-md-left flex-column flex-md-row m-0">
                 <div class="mr-md-3 mb-2 mb-md-0">
                     <a href="#" class="profile-thumb">

@@ -511,7 +511,7 @@ class Client extends Component
         $a = ModelsAnggota::where('nama', 'like', '%' . $this->search . '%')->orderBy('id', 'asc')->paginate($this->paginate);
         $user_login = ModelsAnggota::where('email', Auth::user()->email)->first();
         $id = $user_login->id;
-        $this->bannerImage = Storage::url('images/banner/banner1.jpg'); // Banner default
+        // $this->bannerImage = Storage::url('images/banner/banner1.jpg'); // Banner default
 
         $riwayat_pendidikan = Pendidikan::where('id_anggota', $id)
             ->orderByRaw("FIELD(tingkat, 'SD', 'MI', 'SMP', 'MTs', 'SMA', 'MA', 'SMK', 'S1', 'S2', 'S3')")
