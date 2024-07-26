@@ -44,6 +44,7 @@ use App\Http\Controllers\RegistrasiController;
 
 
 
+Route::get('/', [HomeController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
     //Admin
@@ -80,7 +81,6 @@ Route::middleware('auth')->group(function () {
 
 
 Route::middleware('only_guest')->group(function () {
-    Route::get('/', [HomeController::class, 'index']);
     //Route Registrasi Anggota
     Route::get('/registrasi', [RegistrasiController::class, 'index'])->name('registrasi.index');
     Route::post('/registrasi/store', [RegistrasiController::class, 'store'])->name('registrasi.store');
