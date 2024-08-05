@@ -119,8 +119,16 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <livewire:chart.statistik-cabang>
+            </div>
+        </div>
+    </div>
 
-    <div class="card">
+    {{-- tabel --}}
+    {{-- <div class="card">
         <div class="table-responsive">
             <table class="table datatable table-striped table-bordered">
                 <thead class="text-center">
@@ -163,8 +171,8 @@
                 </tfoot>
             </table>
         </div>
-    </div>
-
+    </div> --}}
+    {{-- end table --}}
 
     <div class="row">
         <div class="col-md-3">
@@ -194,7 +202,5 @@
             <livewire:chart.usia>
         </div>
     </div>
-    {{-- <div class="col-md-12">
-        <livewire:chart.cabang>
-    </div> --}}
+
 </div>
