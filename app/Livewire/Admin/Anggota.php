@@ -540,13 +540,6 @@ class Anggota extends Component
     {
         $this->listType = Cabang::where('cabang_root', $cabang_cd)->get();
 
-        // Debug log to check the result of the query
-        if ($this->listType->isEmpty()) {
-            logger('No cabang found with cabang_root: ' . $cabang_cd);
-        } else {
-            logger('Cabang found: ' . $this->listType);
-        }
-
         $this->ranting = null;
     }
 

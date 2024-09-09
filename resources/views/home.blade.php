@@ -20,7 +20,7 @@
     <link rel="icon" href="{{ asset('Assets\favicon.png') }}" type="image/x-icon">
 
     <!-- Stylesheets -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 
     <!-- Global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
@@ -130,7 +130,8 @@
                         My-<span class="coloring">pemudaMU</span>
                     </h3>
                     <h4 class="name">
-                        <span class="coloring">Platform Organisasi Pemuda Muhammadiyah Wonosobo</span>
+                        <span class="coloring">Platform Organisasi Pemuda Muhammadiyah Wonosobo</span> <br>
+                        <span>"Building the Future with Youth Digitalization!"</span>
                     </h4>
                     <div class="shane_tm_animate_text">
                         <span class="cd-headline slide">
@@ -179,16 +180,20 @@
                                 </span>
                             </span>
                         </div>
-                        <p>My-pemudaMu adalah platform untuk organisasi Pemuda Muhammadiyah Wonosobo yang akan
-                            digunakan untuk memudahkan pendataan anggota organisasi dalam rangka penerapan Big Data.
+                        <p> My-pemudaMu adalah platform digital resmi yang dikembangkan oleh Pemuda Muhammadiyah
+                            Wonosobo untuk memfasilitasi pendataan anggota, pengelolaan kegiatan, dan administrasi
+                            organisasi dari tingkat ranting hingga daerah. Aplikasi ini bertujuan untuk memanfaatkan
+                            teknologi Big Data dalam rangka meningkatkan efisiensi dan transparansi organisasi.
 
-                            My-pemudaMu menyediakan berbagai fitur yang memudahkan aktivitas,
-                            Manajemen Administrasi dan Kegiatan Pemuda Muhhamadiyah Wonosobo dari Ranting sampai Daerah,
-                            sehingga dapat memudahkan dan mengefisiensi kinerja dari setiap pimpinan Pemuda Muhammadiyah
-                            di seluruh Wonosobo.
-
+                            Dengan My-pemudaMu, setiap anggota dapat dengan mudah mengakses informasi penting,
+                            memperbarui data pribadi, serta mendapatkan e-KTA Pemuda Muhammadiyah secara elektronik.
+                            Selain itu, aplikasi ini juga mendukung pengurus dalam mengelola acara, mendokumentasikan
+                            kegiatan, serta melakukan administrasi organisasi secara lebih efektif.
                         </p>
+
+
                     </div>
+
                     {{-- <div class="right">
                         <ul>
                             <li>
@@ -212,6 +217,7 @@
                         </ul>
                     </div> --}}
                 </div>
+
                 {{-- <div class="shane_tm_services">
                     <div class="shane_tm_second_title">
                         <span>What I Do</span>
@@ -465,6 +471,11 @@
                 <div class="shane_tm_main_title">
                     <h3>Database <span class="coloring">Anggota</span></h3>
                 </div>
+                <div class="container">
+                    <p> Halaman Database Anggota di My-pemudaMu menyediakan akses langsung kepada pengurus untuk melihat
+                        dan mengelola data keanggotaan Pemuda Muhammadiyah Wonosobo dari tingkat ranting hingga daerah
+                    </p>
+                </div>
                 <div class="experience_list">
                     <div class="content">
                         <div class="row">
@@ -535,7 +546,8 @@
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col">
-                                                <h3 class="font-weight-semibold mb-0">{{ $verifikasiAnggota }}</h3>
+                                                <h3 class="font-weight-semibold mb-0">{{ $verifikasiAnggota }}
+                                                </h3>
                                                 <h6 class="font-weight-light">Verifikasi</h6>
                                             </div>
                                             <div class="col-auto">
@@ -592,7 +604,7 @@
                         </div>
 
 
-                        <div class="card">
+                        {{-- <div class="card">
                             <div class="table-responsive">
                                 <table class="table datatable table-striped table-bordered">
                                     <thead class="text-center">
@@ -630,154 +642,12 @@
                                     </tfoot>
                                 </table>
                             </div>
-                        </div>
+                        </div> --}}
 
                     </div>
-
-                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                    <script>
-                        // Script untuk inisialisasi grafik dengan Chart.js
-                        document.addEventListener('DOMContentLoaded', function() {
-                            // Inisialisasi Chart.js untuk Status Pernikahan
-                            var ctx1 = document.getElementById('statusPernikahanChart').getContext('2d');
-                            var statusPernikahanChart = new Chart(ctx1, {
-                                type: 'bar',
-                                data: {
-                                    labels: ['Single', 'Married', 'Divorced'],
-                                    datasets: [{
-                                        label: 'Status Pernikahan',
-                                        data: [12, 19, 3], // Ganti dengan data dari backend
-                                        backgroundColor: '#26a69a'
-                                    }]
-                                }
-                            });
-
-                            // Inisialisasi Chart.js untuk Gol Darah
-                            var ctx2 = document.getElementById('golDarahChart').getContext('2d');
-                            var golDarahChart = new Chart(ctx2, {
-                                type: 'pie',
-                                data: {
-                                    labels: ['A', 'B', 'AB', 'O'],
-                                    datasets: [{
-                                        label: 'Gol Darah',
-                                        data: [10, 20, 15, 25], // Ganti dengan data dari backend
-                                        backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56']
-                                    }]
-                                }
-                            });
-
-                            // Tambahkan inisialisasi chart lainnya di sini
-                        });
-                    </script>
 
                 </div>
-                {{-- <div class="shane_tm_button">
-                    <a href="img/resume/resume.jpg" download><span>Download CV</span></a>
-                </div>
-                <div class="shane_tm_skills">
-                    <div class="left">
-                        <div class="shane_tm_second_title">
-                            <span>Programming Skills</span>
-                        </div>
-                        <ul>
-                            <li>
-                                <div class="list_inner">
-                                    <div class="details">
-                                        <span class="name">Javascript</span>
-                                        <span class="number">95%</span>
-                                    </div>
-                                    <div class="progress" data-value="95">
-                                        <div class="bar"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="list_inner">
-                                    <div class="details">
-                                        <span class="name">HTML &amp; CSS</span>
-                                        <span class="number">90%</span>
-                                    </div>
-                                    <div class="progress" data-value="90">
-                                        <div class="bar"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="list_inner">
-                                    <div class="details">
-                                        <span class="name">PHP</span>
-                                        <span class="number">80%</span>
-                                    </div>
-                                    <div class="progress" data-value="80">
-                                        <div class="bar"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="list_inner">
-                                    <div class="details">
-                                        <span class="name">WordPress</span>
-                                        <span class="number">85%</span>
-                                    </div>
-                                    <div class="progress" data-value="85">
-                                        <div class="bar"></div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="right">
-                        <div class="shane_tm_second_title">
-                            <span>Language Skills</span>
-                        </div>
-                        <ul>
-                            <li>
-                                <div class="list_inner">
-                                    <div class="details">
-                                        <span class="name">English</span>
-                                        <span class="number">95%</span>
-                                    </div>
-                                    <div class="progress" data-value="95">
-                                        <div class="bar"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="list_inner">
-                                    <div class="details">
-                                        <span class="name">Spanish</span>
-                                        <span class="number">90%</span>
-                                    </div>
-                                    <div class="progress" data-value="90">
-                                        <div class="bar"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="list_inner">
-                                    <div class="details">
-                                        <span class="name">Italian</span>
-                                        <span class="number">80%</span>
-                                    </div>
-                                    <div class="progress" data-value="80">
-                                        <div class="bar"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="list_inner">
-                                    <div class="details">
-                                        <span class="name">Japanese</span>
-                                        <span class="number">85%</span>
-                                    </div>
-                                    <div class="progress" data-value="85">
-                                        <div class="bar"></div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div> --}}
+
             </div>
         </div>
         <!-- /RESUME -->
@@ -788,167 +658,16 @@
                 <div class="shane_tm_main_title">
                     <h3>Kegiatan <span class="coloring">Organisasi</span></h3>
                 </div>
-                {{-- <div class="portfolio_filter">
-                    <ul>
-                        <li><a href="#" class="current" data-filter="*">All</a></li>
-                        <li><a href="#" data-filter=".vimeo">Vimeo Video</a></li>
-                        <li><a href="#" data-filter=".youtubevideo">YouTube Video</a></li>
-                        <li><a href="#" data-filter=".popupimage">Popup Image</a></li>
-                    </ul>
+                <div class="portfolio_filter">
+                    <p>
+                        Halaman Event memberikan ruang bagi Pemuda Muhammadiyah untuk mengelola, mendaftar, dan
+                        mendokumentasikan kegiatan organisasi. Semua acara, dari tingkat ranting hingga daerah, dapat
+                        dilihat dan diikuti melalui aplikasi My-pemudaMu.
+                    </p>
+
+
                 </div>
-                <div class="portfolio_list">
-                    <ul class="gallery_zoom">
-                        <li class="vimeo">
-                            <div class="list_inner">
-                                <div class="image_wrap">
-                                    <img src="img/portfolio/3-4.jpg" alt="" />
-                                    <div class="video-wrapper">
-                                        <video loop muted autoplay>
-                                            <source
-                                                src="https://player.vimeo.com/external/390322013.sd.mp4?s=15c5b725ee36b37364ff25c1a709ad4855bc3213&profile_id=165&oauth2_token_id=57447761"
-                                                type="video/mp4">
-                                        </video>
-                                    </div>
-                                </div>
-                                <div class="desc">
-                                    <div class="in">
-                                        <h3>Solonick Dance</h3>
-                                        <span>Vimeo</span>
-                                    </div>
-                                </div>
-                                <a class="full_link" href="portfolio-single.html"></a>
-                            </div>
-                        </li>
-                        <li class="youtubevideo">
-                            <div class="list_inner">
-                                <div class="image_wrap">
-                                    <img src="img/portfolio/3-4.jpg" alt="" />
-                                    <div class="main" data-img-url="img/portfolio/2.jpg"></div>
-                                </div>
-                                <div class="desc">
-                                    <div class="in">
-                                        <h3>Technology</h3>
-                                        <span>YouTube</span>
-                                    </div>
-                                </div>
-                                <a class="full_link popup-youtube"
-                                    href="https://www.youtube.com/watch?v=iIrSCm_0Sj4"></a>
-                            </div>
-                        </li>
-                        <li class="popupimage">
-                            <div class="list_inner">
-                                <div class="image_wrap">
-                                    <img src="img/portfolio/3-4.jpg" alt="" />
-                                    <div class="main" data-img-url="img/portfolio/3.jpg"></div>
-                                </div>
-                                <div class="desc">
-                                    <div class="in">
-                                        <h3>New Glass</h3>
-                                        <span>Fashion</span>
-                                    </div>
-                                </div>
-                                <a class="full_link zoom" href="img/portfolio/3.jpg"></a>
-                            </div>
-                        </li>
-                        <li class="popupimage">
-                            <div class="list_inner">
-                                <div class="image_wrap">
-                                    <img src="img/portfolio/3-4.jpg" alt="" />
-                                    <div class="main" data-img-url="img/portfolio/4.jpg"></div>
-                                </div>
-                                <div class="desc">
-                                    <div class="in">
-                                        <h3>Yellow Bag</h3>
-                                        <span>Branding</span>
-                                    </div>
-                                </div>
-                                <a class="full_link zoom" href="img/portfolio/4.jpg"></a>
-                            </div>
-                        </li>
-                        <li class="youtubevideo">
-                            <div class="list_inner">
-                                <div class="image_wrap">
-                                    <img src="img/portfolio/3-4.jpg" alt="" />
-                                    <div class="main" data-img-url="img/portfolio/8.jpg"></div>
-                                </div>
-                                <div class="desc">
-                                    <div class="in">
-                                        <h3>Revolution</h3>
-                                        <span>YouTube</span>
-                                    </div>
-                                </div>
-                                <a class="full_link popup-youtube"
-                                    href="https://www.youtube.com/watch?v=iIrSCm_0Sj4"></a>
-                            </div>
-                        </li>
-                        <li class="popupimage">
-                            <div class="list_inner">
-                                <div class="image_wrap">
-                                    <img src="img/portfolio/3-4.jpg" alt="" />
-                                    <div class="main" data-img-url="img/portfolio/6.jpg"></div>
-                                </div>
-                                <div class="desc">
-                                    <div class="in">
-                                        <h3>Happy Men</h3>
-                                        <span>Branding</span>
-                                    </div>
-                                </div>
-                                <a class="full_link zoom" href="img/portfolio/6.jpg"></a>
-                            </div>
-                        </li>
-                        <li class="popupimage">
-                            <div class="list_inner">
-                                <div class="image_wrap">
-                                    <img src="img/portfolio/3-4.jpg" alt="" />
-                                    <div class="main" data-img-url="img/portfolio/7.jpg"></div>
-                                </div>
-                                <div class="desc">
-                                    <div class="in">
-                                        <h3>Seaside</h3>
-                                        <span>Nature</span>
-                                    </div>
-                                </div>
-                                <a class="full_link zoom" href="img/portfolio/7.jpg"></a>
-                            </div>
-                        </li>
-                        <li class="vimeo">
-                            <div class="list_inner">
-                                <div class="image_wrap">
-                                    <img src="img/portfolio/3-4.jpg" alt="" />
-                                    <div class="video-wrapper">
-                                        <video loop muted autoplay>
-                                            <source
-                                                src="https://player.vimeo.com/external/390319820.sd.mp4?s=db3498515d124d308840893802ee139df82aba3a&amp;profile_id=165&amp;oauth2_token_id=57447761"
-                                                type="video/mp4">
-                                        </video>
-                                    </div>
-                                </div>
-                                <div class="desc">
-                                    <div class="in">
-                                        <h3>Mondo Alendo</h3>
-                                        <span>Vimeo</span>
-                                    </div>
-                                </div>
-                                <a class="full_link" href="portfolio-single.html"></a>
-                            </div>
-                        </li>
-                        <li class="popupimage">
-                            <div class="list_inner">
-                                <div class="image_wrap">
-                                    <img src="img/portfolio/3-4.jpg" alt="" />
-                                    <div class="main" data-img-url="img/portfolio/5.jpg"></div>
-                                </div>
-                                <div class="desc">
-                                    <div class="in">
-                                        <h3>Emotion</h3>
-                                        <span>Branding</span>
-                                    </div>
-                                </div>
-                                <a class="full_link zoom" href="img/portfolio/5.jpg"></a>
-                            </div>
-                        </li>
-                    </ul>
-                </div> --}}
+
             </div>
         </div>
         <!-- /WORKS -->
@@ -959,118 +678,12 @@
                 <div class="shane_tm_main_title">
                     <h3>Administrasi <span class="coloring">Organisasi</span></h3>
                 </div>
-                {{-- <div class="news_inner">
-                    <ul>
-                        <li>
-                            <div class="list_inner">
-                                <div class="image">
-                                    <img src="img/news/1000x700.jpg" alt="" />
-                                    <div class="main" data-img-url="img/news/1.jpg"></div>
-                                    <span class="category">Branding</span>
-                                    <a class="full_link" href="blog-single.html"></a>
-                                </div>
-                                <div class="details">
-                                    <span class="date">July 25, 2020</span>
-                                    <h3 class="title"><a href="blog-single.html">Absolut Rebrand as Part of Their
-                                            Global Strategy</a></h3>
-                                    <div class="shane_tm_read_more">
-                                        <a href="blog-single.html">Read More<span class="arrow"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="list_inner">
-                                <div class="image">
-                                    <img src="img/news/1000x700.jpg" alt="" />
-                                    <div class="main" data-img-url="img/news/2.jpg"></div>
-                                    <span class="category">Marketing</span>
-                                    <a class="full_link" href="blog-single.html"></a>
-                                </div>
-                                <div class="details">
-                                    <span class="date">July 13, 2020</span>
-                                    <h3 class="title"><a href="blog-single.html">The Difference Between Logo Design
-                                            and Branding</a></h3>
-                                    <div class="shane_tm_read_more">
-                                        <a href="blog-single.html">Read More<span class="arrow"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="list_inner">
-                                <div class="image">
-                                    <img src="img/news/1000x700.jpg" alt="" />
-                                    <div class="main" data-img-url="img/news/3.jpg"></div>
-                                    <span class="category">Development</span>
-                                    <a class="full_link" href="blog-single.html"></a>
-                                </div>
-                                <div class="details">
-                                    <span class="date">June 07, 2020</span>
-                                    <h3 class="title"><a href="blog-single.html">Interview with Charlotte Holroyd on
-                                            Ethical Branding</a></h3>
-                                    <div class="shane_tm_read_more" data-color="">
-                                        <a href="blog-single.html">Read More<span class="arrow"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="list_inner">
-                                <div class="image">
-                                    <img src="img/news/1000x700.jpg" alt="" />
-                                    <div class="main" data-img-url="img/news/1.jpg"></div>
-                                    <span class="category">Branding</span>
-                                    <a class="full_link" href="blog-single.html"></a>
-                                </div>
-                                <div class="details">
-                                    <span class="date">July 25, 2020</span>
-                                    <h3 class="title"><a href="blog-single.html">Absolut Rebrand as Part of Their
-                                            Global Strategy</a></h3>
-                                    <div class="shane_tm_read_more">
-                                        <a href="blog-single.html">Read More<span class="arrow"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="list_inner">
-                                <div class="image">
-                                    <img src="img/news/1000x700.jpg" alt="" />
-                                    <div class="main" data-img-url="img/news/2.jpg"></div>
-                                    <span class="category">Marketing</span>
-                                    <a class="full_link" href="blog-single.html"></a>
-                                </div>
-                                <div class="details">
-                                    <span class="date">July 13, 2020</span>
-                                    <h3 class="title"><a href="blog-single.html">The Difference Between Logo Design
-                                            and Branding</a></h3>
-                                    <div class="shane_tm_read_more">
-                                        <a href="blog-single.html">Read More<span class="arrow"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="list_inner">
-                                <div class="image">
-                                    <img src="img/news/1000x700.jpg" alt="" />
-                                    <div class="main" data-img-url="img/news/3.jpg"></div>
-                                    <span class="category">Development</span>
-                                    <a class="full_link" href="blog-single.html"></a>
-                                </div>
-                                <div class="details">
-                                    <span class="date">June 07, 2020</span>
-                                    <h3 class="title"><a href="blog-single.html">Interview with Charlotte Holroyd on
-                                            Ethical Branding</a></h3>
-                                    <div class="shane_tm_read_more" data-color="">
-                                        <a href="blog-single.html">Read More<span class="arrow"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div> --}}
+                <div class="news_inner">
+                    <p>
+                        Halaman Administrasi ditujukan untuk membantu pengurus Pemuda Muhammadiyah dalam mengelola aspek
+                        administrasi organisasi, seperti laporan keuangan, pendataan acara, dan pelaporan kegiatan.
+                    </p>
+                </div>
             </div>
         </div>
         <!-- /NEWS -->
@@ -1164,6 +777,7 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5bpEs3xlB8vhxNFErwoo3MXR64uavf6Y&callback=initMap"></script> --}}
     {{-- <script src="js/init.js"></script> --}}
     <script src="{{ asset('Shane\html\js\init.js') }}"></script>
+
     <!-- /SCRIPTS -->
 
 </body>

@@ -51,11 +51,22 @@
                         </div>
                         <div class="row mb-2">
                             <div class="col-md-4">E-mail</div>
-                            <div class="col-md-8">: {{ $email }}</div>
+                            @if (Auth::user()->role_id == 1)
+                                <div class="col-md-8">: {{ $email }}</div>
+                            @else
+                                <div class="col-md-8">: <i style="color:red; "> Data Rahasia </i>
+                                </div>
+                            @endif
+
                         </div>
                         <div class="row mb-2">
                             <div class="col-md-4">No. HP</div>
-                            <div class="col-md-8">: {{ $no_telp }}</div>
+                            @if (Auth::user()->role_id == 1)
+                                <div class="col-md-8">: {{ $no_telp }}</div>
+                            @else
+                                <div class="col-md-8">: <i style="color:red; "> Data Rahasia </i>
+                                </div>
+                            @endif
                         </div>
                         <div class="row mb-2">
                             <div class="col-md-4">Alamat</div>
@@ -728,7 +739,8 @@
                                         @endif
 
                                         @if ($value->status == 'Terverifikasi')
-                                            <a href="#" type="button" class="btn btn-primary btn-icon btn-sm"
+                                            <a href="#" type="button"
+                                                class="btn btn-primary btn-icon btn-sm idcarddownloadButton"
                                                 data-id="{{ \Illuminate\Support\Facades\Crypt::encryptString($value->id) }}">
                                                 <i class="icon-vcard"></i>
                                             </a>
