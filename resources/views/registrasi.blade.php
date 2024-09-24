@@ -358,6 +358,26 @@
                                                 @else
                                                     <option value="SMA">SMA</option>
                                                 @endif
+                                                @if (old('pendidikan_terakhir') == 'Diploma 1')
+                                                    <option value="Diploma 1" selected>Diploma 1</option>
+                                                @else
+                                                    <option value="Diploma 1">Diploma 1</option>
+                                                @endif
+                                                @if (old('pendidikan_terakhir') == 'Diploma 2')
+                                                    <option value="Diploma 2" selected>Diploma 2</option>
+                                                @else
+                                                    <option value="Diploma 2">Diploma 2</option>
+                                                @endif
+                                                @if (old('pendidikan_terakhir') == 'Diploma 3')
+                                                    <option value="Diploma 3" selected>Diploma 3</option>
+                                                @else
+                                                    <option value="Diploma 3">Diploma 3</option>
+                                                @endif
+                                                @if (old('pendidikan_terakhir') == 'Diploma 4')
+                                                    <option value="Diploma 4" selected>Diploma 4</option>
+                                                @else
+                                                    <option value="Diploma 4">Diploma 4</option>
+                                                @endif
                                                 @if (old('pendidikan_terakhir') == 'S1')
                                                     <option value="S1" selected>S1</option>
                                                 @else

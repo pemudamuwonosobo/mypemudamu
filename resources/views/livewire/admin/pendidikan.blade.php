@@ -57,6 +57,10 @@
                                     <option value="SMA">SMA</option>
                                     <option value="MA">MA</option>
                                     <option value="SMK">SMK</option>
+                                    <option value="Diploma 1">Diploma 1</option>
+                                    <option value="Diploma 2">Diploma 2</option>
+                                    <option value="Diploma 3">Diploma 3</option>
+                                    <option value="Diploma 3">Diploma 4</option>
                                     <option value="S1">S1</option>
                                     <option value="S2">S2</option>
                                     <option value="S3">S3</option>
