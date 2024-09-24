@@ -315,7 +315,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <label>Golongan Darah <span class="text-danger">*</span></label>
                                     <select name="gol_darah" wire:change='updateListType'
@@ -335,7 +335,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Pendidikan Terakhir <span class="text-danger">*</span></label>
                                     <div class="row">

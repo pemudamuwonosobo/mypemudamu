@@ -540,7 +540,7 @@ class Anggota extends Component
     {
         $this->listType = Cabang::where('cabang_root', $cabang_cd)->get();
 
-        $this->ranting = null;
+        // $this->ranting = null;
     }
 
     public function generateYears()

@@ -67,8 +67,6 @@
                                         @enderror
                                     </div>
                                 </div>
-
-                                {{ $tingkat }}
                             @endif
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label">Nama Organisasi:</label>

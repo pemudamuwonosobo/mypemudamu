@@ -64,7 +64,7 @@
                 <div class="row">
                     <ul class="nav navbar-nav">
                         <li class="nav-item">
-                            <a href="#profil" class="navbar-nav-link active" data-toggle="tab">
+                            <a href="#profil" wire:click="refrash" class="navbar-nav-link active" data-toggle="tab">
                                 <i class="icon-profile mr-2"></i>
                                 Profil
                             </a>
@@ -592,23 +592,21 @@
                                         <h6 class="card-title">Profil Saya</h6>
                                     </div>
 
-                                    @if ($dataclient->status == 'Draft')
-                                        <div class="p-2 bd-highlight ml-auto d-flex align-items-center">
-                                            <p><button type="button"
-                                                    class="btn btn-warning btn-labeled btn-labeled-left btn-sm"
-                                                    wire:click="edit({{ $dataclient->id }})"><b><i
-                                                            class="icon-pencil"></i></b> Edit Profil</button></p>
 
-                                        </div>
-                                    @endif
+                                    <div class="p-2 bd-highlight ml-auto d-flex align-items-center">
+                                        <p><button type="button"
+                                                class="btn btn-warning btn-labeled btn-labeled-left btn-sm"
+                                                wire:click="edit({{ $dataclient->id }})"><b><i
+                                                        class="icon-pencil"></i></b> Edit Profil</button></p>
+
+                                    </div>
                                     @if ($dataclient->status == 'Terverifikasi')
                                         <div class="p-2 bd-highlight  ml-auto d-flex align-items-center">
                                             <p><button href="#" type="button"
                                                     class="btn btn-primary btn-labeled btn-labeled-left btn-sm idcarddownloadButton"
                                                     data-id="{{ \Illuminate\Support\Facades\Crypt::encryptString($dataclient->id) }}"><b><i
                                                             class="icon-vcard"></i></b>
-                                                    ID
-                                                    Card</button></p>
+                                                    e-KTA</button></p>
 
                                         </div>
                                     @endif

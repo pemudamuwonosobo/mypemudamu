@@ -379,14 +379,7 @@ class Client extends Component
     {
         $this->listType = Cabang::where('cabang_root', $cabang_cd)->get();
 
-        // Debug log to check the result of the query
-        if ($this->listType->isEmpty()) {
-            logger('No cabang found with cabang_root: ' . $cabang_cd);
-        } else {
-            logger('Cabang found: ' . $this->listType);
-        }
-
-        $this->ranting = null;
+        // $this->ranting = null;
     }
 
     public function generateYears()
@@ -489,6 +482,13 @@ class Client extends Component
         $this->dispatch('sweet-alert-save', icon: 'success', title: 'Data berhasil dihapus');
         $this->clear();
     }
+
+    public function refrash()
+    {
+        $this->dispatch('refresh');
+    }
+
+
     public function render()
     {
         $this->js(
