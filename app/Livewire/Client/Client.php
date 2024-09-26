@@ -489,6 +489,106 @@ class Client extends Component
     }
 
 
+    public function editFoto($id)
+    {
+        $data = ModelsAnggota::findOrFail($id);
+        $this->foto = $data->foto;
+        $this->anggota_id = $id;
+        $this->js(<<<'JS'
+        $('#FormModal').modal('show');
+     JS);
+    }
+
+    public function updateFoto()
+    {
+        $rules = [
+            'foto' => 'required',
+        ];
+
+        $messages = [
+            'foto.required' => 'Foto wajib diisi!',
+        ];
+
+        // Validasi data
+        $validatedData = $this->validate($rules, $messages);
+
+        // Temukan data anggota yang akan diupdate
+        $data = ModelsAnggota::findOrFail($this->anggota_id);
+
+        // Simpan referensi ke foto lama jika ada
+        $oldFoto = $data->foto;
+
+        // Cek dan simpan foto baru jika ada
+        if ($this->foto && is_object($this->foto) && method_exists($this->foto, 'getClientOriginalExtension')) {
+            $namaOrang = $this->nama;
+            $kta = $data->no_anggota;
+
+            // Ambil semua file yang sudah ada di direktori
+            $existingFiles = collect(Storage::files('public/images/fotoanggota'))
+                ->filter(function ($file) use ($namaOrang, $kta) {
+                    return strpos($file, "{$namaOrang}_{$kta}.update_") !== false;
+                });
+
+            // Tentukan nomor update terakhir
+            $lastUpdateNumber = $existingFiles->map(function ($file) {
+                preg_match('/update_(\d+)/', $file, $matches);
+                return isset($matches[1]) ? (int)$matches[1] : 0;
+            })->max();
+
+            $ubahke = $lastUpdateNumber + 1;
+
+            $fotoName = $namaOrang . '_' . $kta . '.update_' . $ubahke . '.' . $this->foto->getClientOriginalExtension();
+
+            // Simpan file foto baru
+            $this->foto->storeAs('public/images/fotoanggota', $fotoName);
+            $validatedData['foto'] = 'images/fotoanggota/' . $fotoName;
+        } else {
+            // Jika tidak ada foto baru, gunakan foto lama
+            $validatedData['foto'] = $oldFoto;
+        }
+
+        // Update data anggota
+        try {
+            $data->update($validatedData);
+
+            // Hapus foto lama jika ada dan jika foto baru berhasil disimpan
+            if ($oldFoto && isset($validatedData['foto']) && $validatedData['foto'] !== $oldFoto && Storage::exists('public/' . $oldFoto)) {
+                Storage::delete('public/' . $oldFoto);
+            }
+
+            $this->js(<<<'JS'
+                const Toast =
+                Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "Foto berhasil diupdate"
+                });
+        JS);
+        } catch (\Exception $e) {
+            session()->flash('error', 'Gagal mengupdate data anggota: ' . $e->getMessage());
+        }
+
+        // Reset the foto field and hide the modal
+        $this->reset('foto');
+        $this->js(<<<'JS'
+        $('#FormModal').modal('hide');
+        JS);
+    }
+
+
+
+
+
     public function render()
     {
         $this->js(
@@ -497,7 +597,7 @@ class Client extends Component
             $(".form-input-styled").uniform({
                 fileButtonClass: "action btn bg-pink-400",
             });
-             $(".daterange-single").daterangepicker();
+            $(".daterange-single").daterangepicker();
             $(".file-input").fileinput();
             $(".form-control-select2").select2();
             },0);

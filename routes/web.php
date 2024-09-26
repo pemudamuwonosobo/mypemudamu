@@ -38,9 +38,9 @@ use App\Http\Controllers\RegistrasiController;
 // Route::get('/', function () {
 //     return view('home');
 // });
-// Route::get('template', function () {
-//     return file::get(public_path() . '/documentation.html');
-// });
+Route::get('template', function () {
+    return file::get(public_path() . '/documentation.html');
+});
 
 
 

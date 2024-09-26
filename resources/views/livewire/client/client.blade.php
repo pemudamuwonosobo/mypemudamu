@@ -4,14 +4,60 @@
             <div class="profile-cover-img" style="background-image: url('{{ asset('Assets/banner/banner1.jpg') }}');">
             </div>
             <div class="media align-items-center text-center text-md-left flex-column flex-md-row m-0">
-                <div class="mr-md-3 mb-2 mb-md-0">
-                    <a href="#" class="profile-thumb">
-                        <img src="{{ asset('storage/' . $dataclient->foto) }}" class="border-white rounded-circle"
-                            width="48" height="48" alt="">
-                    </a>
+                <div class="card-img-actions d-inline-block mb-3">
+                    <img src="{{ asset('storage/' . $dataclient->foto) }}" class="border-white rounded-circle"
+                        width="170" height="170" alt="">
+                    <div class="card-img-actions-overlay card-img rounded-circle">
+                        <button type="button"
+                            class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round"
+                            data-toggle="modal" data-target="#FormModal" wire:click="editFoto({{ $dataclient->id }})">
+                            <i class="icon-camera"></i><br>Ubah
+                        </button>
+                    </div>
                 </div>
 
-                <div class="media-body text-white">
+                <!-- Modal Form Import Excel-->
+                <div wire:ignore.self class="modal fade" id="FormModal" tabindex="-1" role="dialog"
+                    aria-labelledby="FormModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="FormModalLabel">Ubah</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="fotoProfil" class="form-label">Pilih Foto Profil</label>
+                                        <input type="file" class="form-control @error('foto') is-invalid @enderror"
+                                            id="fotoProfil" wire:model.live="foto" name="fotoProfil" accept="image/*"
+                                            onchange="previewFotoProfil(event)">
+                                        @error('foto')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <!-- Pratinjau Foto -->
+                                    <div class="mb-3">
+                                        <img id="pratinjauFoto" src="#" alt="Pratinjau Foto Profil"
+                                            style="display:none; width: 150px; height: 150px; object-fit: cover;"
+                                            class="rounded-circle">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                <button type="button" class="btn btn-primary"
+                                    wire:click="updateFoto()">updatedFoto</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="media-body text-white ml-3">
                     <h1 class="mb-0"> {{ $dataclient->gelar_depan }}
                         @if (!empty($dataclient->gelar_depan))
                             .&nbsp;
@@ -90,11 +136,7 @@
                     </ul>
 
                 </div>
-                <div class="row d-flex justify-content-end mb-1">
-                    <li class="nav-item">
 
-                    </li>
-                </div>
             </div>
         </div>
         <!-- /profile navigation -->
@@ -141,7 +183,8 @@
                                                                             class="form-control form-control-select2">
                                                                             <option value="">Pilih</option>
                                                                             @foreach ($cabangs as $list)
-                                                                                <option value="{{ $list->cabang_cd }}">
+                                                                                <option
+                                                                                    value="{{ $list->cabang_cd }}">
                                                                                     {{ $list->cabang_nm }}
                                                                                 </option>
                                                                             @endforeach
@@ -156,8 +199,8 @@
 
                                                             <div class="col-md-6">
                                                                 <div class="form-group row">
-                                                                    <label class="col-lg-4 col-form-label">Ranting <span
-                                                                            class="text-danger">*</span></label>
+                                                                    <label class="col-lg-4 col-form-label">Ranting
+                                                                        <span class="text-danger">*</span></label>
                                                                     <div class="col-lg-8">
                                                                         <select x-init="$($el).select2({ placeholder: 'Pilih Cabang' });
                                                                         $($el).on('change', function() {
@@ -544,7 +587,7 @@
                                                                 placeholder="Instansi/Tempat Kerja">
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
+                                                    {{-- <div class="form-group row">
                                                         <label class="col-lg-3 col-form-label">Upload Foto <span
                                                                 class="text-danger">*</span></label>
                                                         <div class="col-lg-6" wire:ignore>
@@ -557,7 +600,7 @@
 
                                                     @error('foto')
                                                         <span class="form-text text-danger">{{ $message }}</span>
-                                                    @enderror
+                                                    @enderror --}}
 
                                                 </div>
                                             </div>
@@ -943,6 +986,7 @@
 
         </div>
     </div>
+
 </div>
 
 @push('js')
@@ -961,5 +1005,33 @@
             var redirectWindow = window.open(url, '_blank');
             redirectWindow.open();
         });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var myModal = document.getElementById('FormModal');
+            var fotoInput = document.getElementById('fotoInput'); // ID input foto
+
+            myModal.addEventListener('shown.bs.modal', function() {
+                if (fotoInput) {
+                    fotoInput.focus(); // Fokus pada input foto saat modal terbuka
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // Fungsi untuk menampilkan pratinjau foto
+        function previewFotoProfil(event) {
+            var output = document.getElementById('pratinjauFoto');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.style.display = 'block';
+        }
+
+        // Fungsi untuk submit form (kustomisasi sesuai kebutuhan)
+        function submitFotoProfil() {
+            var form = document.getElementById('formUbahFoto');
+            // Proses unggah atau kirim form menggunakan Ajax atau metode lain
+            console.log('Form siap di-submit');
+        }
     </script>
 @endpush
