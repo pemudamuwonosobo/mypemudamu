@@ -68,26 +68,19 @@
                         @endif
                         {{ $dataclient->gelar_belakang }}
                     </h1>
-                    <span class="d-block">PCPM {{ $dataclient->Cabang->cabang_nm }}</span>
+                    <span class="d-block">PCPM {{ $dataclient->Cabang->cabang_nm }} /
+                        {{ $dataclient->no_anggota }}</span>
 
                     @if ($dataclient->status == 'Draft')
-                        {{ $dataclient->no_anggota }} <span class="badge badge-danger"
+                        <span class="badge badge-danger"
                             style="text-transform: capitalize;">{{ $dataclient->status }}</span>
                     @elseif ($dataclient->status == 'Validasi')
-                        {{ $dataclient->no_anggota }} <span class="badge badge-primary"
+                        <span class="badge badge-primary"
                             style="text-transform: capitalize;">{{ $dataclient->status }}</span>
                     @else
-                        {{ $dataclient->no_anggota }} <span class="badge badge-success"
+                        <span class="badge badge-success"
                             style="text-transform: capitalize;">{{ $dataclient->status }}</span>
                     @endif
-                </div>
-
-                <div class="ml-md-3 mt-2 mt-md-0">
-                    <ul class="list-inline list-inline-condensed mb-0">
-                        <li class="list-inline-item"><a href="/logout" class="btn btn-light border-transparent"><i
-                                    class="icon-switch2"></i> Logout</a></li>
-
-                    </ul>
                 </div>
             </div>
         </div>
@@ -131,6 +124,12 @@
                             <a href="#riwayat_perkaderan" class="navbar-nav-link" data-toggle="tab">
                                 <i class="icon-stairs mr-2"></i>
                                 Riwayat Perkaderan
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#ubah_password" class="navbar-nav-link" data-toggle="tab">
+                                <i class="icon-cogs mr-2"></i>
+                                Ubah Password
                             </a>
                         </li>
                     </ul>
@@ -629,21 +628,54 @@
                         <!-- Sales stats -->
                         <div class="card">
                             {{-- dataview --}}
-                            <div class="card-header">
-                                <div class="d-flex bd-highlight">
-                                    <div class="p-2 w-100 bd-highlight">
-                                        <h6 class="card-title">Profil Saya</h6>
+                            <div class="card-header header-elements-sm-inline">
+                                <h6 class="card-title">Profil Saya</h6>
+                                <div class="header-elements">
+                                    <div class="list-icons ml-3">
+                                        <div class="list-icons-item dropdown">
+                                            <a href="#" class="list-icons-item dropdown-toggle"
+                                                data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                            <div class="dropdown-menu">
+                                                <a href="#" class="dropdown-item"
+                                                    wire:click="edit({{ $dataclient->id }})"> <i
+                                                        class="icon-pencil"></i>
+                                                    Ubah Profil</a>
+                                                @if ($dataclient->status == 'Terverifikasi')
+                                                    <a href="#" class="dropdown-item idcarddownloadButton"
+                                                        type="button"
+                                                        data-id="{{ \Illuminate\Support\Facades\Crypt::encryptString($dataclient->id) }}"><i
+                                                            class="icon-vcard"></i>
+                                                        e-KTA</a>
+                                                @endif
+                                                <div class="dropdown-divider"></div>
+                                                <a href="/logout" class="dropdown-item"><i class="icon-switch2"></i>
+                                                    Logout</a>
+                                            </div>
+                                        </div>
                                     </div>
+                                </div>
+                            </div>
+                            {{-- <div class="card-header"> --}}
+                            <div class="d-flex bd-highlight">
+                                <div class="p-2 w-100 bd-highlight">
+                                    <h6 class="card-title"></h6>
+                                </div>
 
+                                {{-- <div class="ml-md-3 mt-2 mt-md-0">
+                                        <ul class="list-inline list-inline-condensed mb-0">
+                                            <li class="list-inline-item"><a href="/logout" class="btn btn-light border-transparent"><i
+                                                        class="icon-switch2"></i> Logout</a></li>
 
-                                    <div class="p-2 bd-highlight ml-auto d-flex align-items-center">
+                                        </ul>
+                                    </div> --}}
+                                {{-- <div class="p-2 bd-highlight ml-auto d-flex align-items-center">
                                         <p><button type="button"
                                                 class="btn btn-warning btn-labeled btn-labeled-left btn-sm"
                                                 wire:click="edit({{ $dataclient->id }})"><b><i
                                                         class="icon-pencil"></i></b> Edit Profil</button></p>
 
-                                    </div>
-                                    @if ($dataclient->status == 'Terverifikasi')
+                                    </div> --}}
+                                {{-- @if ($dataclient->status == 'Terverifikasi')
                                         <div class="p-2 bd-highlight  ml-auto d-flex align-items-center">
                                             <p><button href="#" type="button"
                                                     class="btn btn-primary btn-labeled btn-labeled-left btn-sm idcarddownloadButton"
@@ -652,9 +684,9 @@
                                                     e-KTA</button></p>
 
                                         </div>
-                                    @endif
-                                </div>
+                                    @endif --}}
                             </div>
+                            {{-- </div> --}}
 
                             <div class="container ml-2">
                                 <div class="row">
@@ -972,6 +1004,13 @@
 
                         <div class="card">
                             <livewire:client.perkaderan-client />
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade" id="ubah_password">
+
+                        <div class="card">
+                            <livewire:setting.change-password />
                         </div>
 
                     </div>

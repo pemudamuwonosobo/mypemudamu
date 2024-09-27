@@ -11,6 +11,7 @@ use App\Livewire\Admin\Organisasi;
 use App\Livewire\Admin\Pendidikan;
 use App\Livewire\Admin\Perkaderan;
 use App\Livewire\Setting\Pekerjaan;
+use App\Livewire\Setting\ChangePassword;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Livewire\Admin\CabangRanting;
@@ -73,7 +74,7 @@ Route::middleware('auth')->group(function () {
     Route::get('id-card', [IDCardController::class, 'show'])->name('id.card.show'); //download
 
 
-
+    //logout
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
@@ -91,3 +92,5 @@ Route::middleware('only_guest')->group(function () {
     Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('only_guest');
     Route::post('login', [AuthController::class, 'authenticating'])->middleware('only_guest');
 });
+
+Route::get('/changePassword', ChangePassword::class)->name('changePassword');
