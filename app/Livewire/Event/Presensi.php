@@ -138,12 +138,6 @@ class Presensi extends Component
         $this->anggota = Anggota::where('no_anggota', $this->no_anggota)->first();
 
         if (!$this->anggota) {
-            // Reset input setelah scan berhasil
-            $this->anggota = Anggota::where('no_anggota', $this->no_anggota)->first();
-            $this->namaAnggota = $this->anggota->nama;
-            $namaAnggota = json_encode($this->namaAnggota); // Pastikan string dienkode dengan benar
-
-            // Tampilkan SweetAlert jika anggota tidak ditemukan
             $this->js(<<<JS
         Swal.fire({
             title: "Maaf",
