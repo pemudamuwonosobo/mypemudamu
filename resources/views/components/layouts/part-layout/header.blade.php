@@ -107,6 +107,7 @@
     {{-- <script src="{{ asset('limitless\global_assets\js\demo_pages\extra_sweetalert.js') }}"></script>
     <script src="{{ asset('limitless\global_assets\js\plugins\notifications\sweet_alert.min.js') }}"></script> --}}
     <!-- /theme JS files -->
+    @stack('css')
     @livewireStyles
     @vite([])
 

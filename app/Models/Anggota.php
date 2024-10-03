@@ -32,4 +32,9 @@ class Anggota extends Model
     {
         return $this->hasOne(Pekerjaan::class, 'id', 'pekerjaan');
     }
+
+    public function presensis()
+    {
+        return $this->hasMany(Presensi::class, 'no_anggota', 'no_anggota');
+    }
 }

@@ -149,7 +149,7 @@
                     </tbody>
                 </table>
                 <div class="mt-4">
-                    {{ $anggota->links() }}
+                    {{ $anggota->links('livewire::bootstrap') }}
                 </div>
             </div>
         </div>

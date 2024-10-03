@@ -119,8 +119,13 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block">Sign in <i
+                                        <button type="submit" class="btn btn-primary btn-block">Masuk <i
                                                 class="icon-circle-right2 ml-2"></i></button>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <a href="{{ route('home') }}" class="btn btn-secondary btn-block"><i
+                                                class="icon-circle-left2 mr-2"></i>Kembali</a>
                                     </div>
 
 

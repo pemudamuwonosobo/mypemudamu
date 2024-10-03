@@ -662,7 +662,7 @@
                             <tr>
                                 <td class="text-center">{{ $loop->index + $dataanggota->firstItem() }}</td>
                                 <td class="text-center">{{ $value->no_anggota }}</td>
-                                <td>{{ $value->nama }}</td>
+                                <td class="text-uppercase">{{ $value->nama }}</td>
                                 <td class="text-center">{{ $value->Cabang->cabang_nm }}
                                     <b>({{ $value->cabang }})</b>
                                 </td>

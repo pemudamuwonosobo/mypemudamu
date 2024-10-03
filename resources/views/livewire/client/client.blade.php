@@ -127,6 +127,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="#riwayat_event" class="navbar-nav-link" data-toggle="tab">
+                                <i class="icon-calendar2 mr-2"></i>
+                                Riwayat Event
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="#ubah_password" class="navbar-nav-link" data-toggle="tab">
                                 <i class="icon-cogs mr-2"></i>
                                 Ubah Password
@@ -1004,6 +1010,13 @@
 
                         <div class="card">
                             <livewire:client.perkaderan-client />
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade" id="riwayat_event">
+
+                        <div class="card">
+                            <livewire:client.event-client />
                         </div>
 
                     </div>
