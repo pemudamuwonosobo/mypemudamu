@@ -37,7 +37,7 @@
                  </li>
              </ul>
          </li>
-         <li
+         {{-- <li
              class="nav-item nav-item-submenu {{ Request::is(['event', 'presensi']) ? 'nav-item-expanded nav-item-open' : '' }}">
              <a href="#" class="nav-link"><i class="icon-calendar2"></i>
                  <span>Event</span></a>
@@ -47,8 +47,16 @@
                          class="nav-link {{ Request::is(['event']) ? 'active' : '' }}">Event</a></li>
 
              </ul>
-         </li>
+         </li> --}}
          @if (Auth::user()->role_id == 1)
+             <li class="nav-item">
+                 <a href="/event" class="nav-link {{ Request::is(['event']) ? 'active' : '' }}">
+                     <i class="icon-calendar2"></i>
+                     <span>
+                         Event
+                     </span>
+                 </a>
+             </li>
              <li class="nav-item">
                  <a href="{{ url('cabang_ranting') }}"
                      class="nav-link {{ Request::is(['cabang_ranting']) ? 'active' : '' }}">
