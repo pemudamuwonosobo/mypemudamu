@@ -3,14 +3,18 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Models\Activity;
+use Illuminate\Notifications\Notifiable;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use LogsActivity;
 
     /**
      * The attributes that are mass assignable.
@@ -23,6 +27,12 @@ class User extends Authenticatable
         'role_id',
         'cabang_id',
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logUnguarded();
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -47,5 +57,15 @@ class User extends Authenticatable
     public function cabangs()
     {
         return $this->belongsTo(Cabang::class, 'cabang_id');
+    }
+    public function anggota()
+    {
+        return $this->hasOne(Anggota::class, 'email', 'email');
+    }
+
+    // Relasi ke activity_log berdasarkan causer_id
+    public function activityLogs()
+    {
+        return $this->hasMany(Activity::class, 'causer_id');
     }
 }

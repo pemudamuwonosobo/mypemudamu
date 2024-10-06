@@ -28,6 +28,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
+        '5f2edeb18ca19ebd9ee6da72dc9f4292' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/helpers.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '265b4faa2b3a9766332744949e83bf97' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/helpers.php',
         'c7a3c339e7e14b60e06a2d7fcce9476b' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/functions.php',
@@ -38,6 +39,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'ce9671a430e4846b44e1c68c7611f9f5' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'a1cfe24d14977df6878b9bf804af2d1c' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Phpunit/Autoload.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
+        '72b1e3f4a2af9b30b3f137b3ec2057fc' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/helpers.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
         '8fde5feda9697fe0ee53a3938c839fb0' => __DIR__ . '/../..' . '/app/Helpers/Helper.php',
     );
@@ -88,10 +90,12 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
             'Symfony\\Component\\ErrorHandler\\' => 31,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Spatie\\LaravelPackageTools\\' => 27,
             'Spatie\\LaravelIgnition\\' => 23,
             'Spatie\\Ignition\\' => 16,
             'Spatie\\FlareClient\\' => 19,
             'Spatie\\Backtrace\\' => 17,
+            'Spatie\\Activitylog\\' => 19,
             'SimpleSoftwareIO\\QrCode\\' => 24,
         ),
         'R' => 
@@ -185,6 +189,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'B' => 
         array (
             'Brick\\Math\\' => 11,
+            'Biscolab\\ReCaptcha\\' => 19,
             'Barryvdh\\Snappy\\' => 16,
             'BaconQrCode\\' => 12,
         ),
@@ -332,6 +337,10 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'Spatie\\LaravelPackageTools\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-package-tools/src',
+        ),
         'Spatie\\LaravelIgnition\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/laravel-ignition/src',
@@ -347,6 +356,10 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'Spatie\\Backtrace\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/backtrace/src',
+        ),
+        'Spatie\\Activitylog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-activitylog/src',
         ),
         'SimpleSoftwareIO\\QrCode\\' => 
         array (
@@ -569,6 +582,10 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
         ),
+        'Biscolab\\ReCaptcha\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src',
+        ),
         'Barryvdh\\Snappy\\' => 
         array (
             0 => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src',
@@ -599,6 +616,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\ClientController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClientController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\EventCardController' => __DIR__ . '/../..' . '/app/Http/Controllers/EventCardController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\IdcardController' => __DIR__ . '/../..' . '/app/Http/Controllers/IdcardController.php',
         'App\\Http\\Controllers\\RegistrasiController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegistrasiController.php',
@@ -624,19 +642,24 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Livewire\\Admin\\Organisasi' => __DIR__ . '/../..' . '/app/Livewire/Admin/Organisasi.php',
         'App\\Livewire\\Admin\\Pendidikan' => __DIR__ . '/../..' . '/app/Livewire/Admin/Pendidikan.php',
         'App\\Livewire\\Admin\\Perkaderan' => __DIR__ . '/../..' . '/app/Livewire/Admin/Perkaderan.php',
+        'App\\Livewire\\Admin\\Report' => __DIR__ . '/../..' . '/app/Livewire/Admin/Report.php',
         'App\\Livewire\\Chart\\BaitulArqom' => __DIR__ . '/../..' . '/app/Livewire/Chart/BaitulArqom.php',
-        'App\\Livewire\\Chart\\Cabang' => __DIR__ . '/../..' . '/app/Livewire/Chart/Cabang.php',
         'App\\Livewire\\Chart\\GolDarah' => __DIR__ . '/../..' . '/app/Livewire/Chart/GolDarah.php',
         'App\\Livewire\\Chart\\Nbm' => __DIR__ . '/../..' . '/app/Livewire/Chart/Nbm.php',
         'App\\Livewire\\Chart\\Pekerjaan' => __DIR__ . '/../..' . '/app/Livewire/Chart/Pekerjaan.php',
         'App\\Livewire\\Chart\\PendidikanTerakhir' => __DIR__ . '/../..' . '/app/Livewire/Chart/PendidikanTerakhir.php',
         'App\\Livewire\\Chart\\Profesi' => __DIR__ . '/../..' . '/app/Livewire/Chart/Profesi.php',
+        'App\\Livewire\\Chart\\StatistikCabang' => __DIR__ . '/../..' . '/app/Livewire/Chart/StatistikCabang.php',
         'App\\Livewire\\Chart\\StatusPernikahan' => __DIR__ . '/../..' . '/app/Livewire/Chart/StatusPernikahan.php',
         'App\\Livewire\\Chart\\Usia' => __DIR__ . '/../..' . '/app/Livewire/Chart/Usia.php',
         'App\\Livewire\\Client\\Client' => __DIR__ . '/../..' . '/app/Livewire/Client/Client.php',
+        'App\\Livewire\\Client\\EventClient' => __DIR__ . '/../..' . '/app/Livewire/Client/EventClient.php',
         'App\\Livewire\\Client\\OrganisasiClient' => __DIR__ . '/../..' . '/app/Livewire/Client/OrganisasiClient.php',
         'App\\Livewire\\Client\\PendidikanClient' => __DIR__ . '/../..' . '/app/Livewire/Client/PendidikanClient.php',
         'App\\Livewire\\Client\\PerkaderanClient' => __DIR__ . '/../..' . '/app/Livewire/Client/PerkaderanClient.php',
+        'App\\Livewire\\Event\\Event' => __DIR__ . '/../..' . '/app/Livewire/Event/Event.php',
+        'App\\Livewire\\Event\\Presensi' => __DIR__ . '/../..' . '/app/Livewire/Event/Presensi.php',
+        'App\\Livewire\\Setting\\ChangePassword' => __DIR__ . '/../..' . '/app/Livewire/Setting/ChangePassword.php',
         'App\\Livewire\\Setting\\GolonganDarah' => __DIR__ . '/../..' . '/app/Livewire/Setting/GolonganDarah.php',
         'App\\Livewire\\Setting\\Pekerjaan' => __DIR__ . '/../..' . '/app/Livewire/Setting/Pekerjaan.php',
         'App\\Livewire\\Setting\\Profesi' => __DIR__ . '/../..' . '/app/Livewire/Setting/Profesi.php',
@@ -644,11 +667,13 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Livewire\\Setting\\User' => __DIR__ . '/../..' . '/app/Livewire/Setting/User.php',
         'App\\Models\\Anggota' => __DIR__ . '/../..' . '/app/Models/Anggota.php',
         'App\\Models\\Cabang' => __DIR__ . '/../..' . '/app/Models/Cabang.php',
+        'App\\Models\\Event' => __DIR__ . '/../..' . '/app/Models/Event.php',
         'App\\Models\\GolonganDarah' => __DIR__ . '/../..' . '/app/Models/GolonganDarah.php',
         'App\\Models\\Organisasi' => __DIR__ . '/../..' . '/app/Models/Organisasi.php',
         'App\\Models\\Pekerjaan' => __DIR__ . '/../..' . '/app/Models/Pekerjaan.php',
         'App\\Models\\Pendidikan' => __DIR__ . '/../..' . '/app/Models/Pendidikan.php',
         'App\\Models\\Perkaderan' => __DIR__ . '/../..' . '/app/Models/Perkaderan.php',
+        'App\\Models\\Presensi' => __DIR__ . '/../..' . '/app/Models/Presensi.php',
         'App\\Models\\Profesi' => __DIR__ . '/../..' . '/app/Models/Profesi.php',
         'App\\Models\\Role' => __DIR__ . '/../..' . '/app/Models/Role.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
@@ -755,6 +780,14 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'Barryvdh\\Snappy\\PdfFaker' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/PdfFaker.php',
         'Barryvdh\\Snappy\\PdfWrapper' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/PdfWrapper.php',
         'Barryvdh\\Snappy\\ServiceProvider' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/ServiceProvider.php',
+        'Biscolab\\ReCaptcha\\Controllers\\ReCaptchaController' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/Controllers/ReCaptchaController.php',
+        'Biscolab\\ReCaptcha\\Exceptions\\InvalidConfigurationException' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/Exceptions/InvalidConfigurationException.php',
+        'Biscolab\\ReCaptcha\\Facades\\ReCaptcha' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/Facades/ReCaptcha.php',
+        'Biscolab\\ReCaptcha\\ReCaptchaBuilder' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/ReCaptchaBuilder.php',
+        'Biscolab\\ReCaptcha\\ReCaptchaBuilderInvisible' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/ReCaptchaBuilderInvisible.php',
+        'Biscolab\\ReCaptcha\\ReCaptchaBuilderV2' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/ReCaptchaBuilderV2.php',
+        'Biscolab\\ReCaptcha\\ReCaptchaBuilderV3' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/ReCaptchaBuilderV3.php',
+        'Biscolab\\ReCaptcha\\ReCaptchaServiceProvider' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/ReCaptchaServiceProvider.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
         'Brick\\Math\\BigNumber' => __DIR__ . '/..' . '/brick/math/src/BigNumber.php',
@@ -6194,6 +6227,24 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'SimpleSoftwareIO\\QrCode\\Image' => __DIR__ . '/..' . '/simplesoftwareio/simple-qrcode/src/Image.php',
         'SimpleSoftwareIO\\QrCode\\ImageMerge' => __DIR__ . '/..' . '/simplesoftwareio/simple-qrcode/src/ImageMerge.php',
         'SimpleSoftwareIO\\QrCode\\QrCodeServiceProvider' => __DIR__ . '/..' . '/simplesoftwareio/simple-qrcode/src/QrCodeServiceProvider.php',
+        'Spatie\\Activitylog\\ActivityLogStatus' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/ActivityLogStatus.php',
+        'Spatie\\Activitylog\\ActivityLogger' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/ActivityLogger.php',
+        'Spatie\\Activitylog\\ActivitylogServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/ActivitylogServiceProvider.php',
+        'Spatie\\Activitylog\\CauserResolver' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/CauserResolver.php',
+        'Spatie\\Activitylog\\CleanActivitylogCommand' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/CleanActivitylogCommand.php',
+        'Spatie\\Activitylog\\Contracts\\Activity' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Contracts/Activity.php',
+        'Spatie\\Activitylog\\Contracts\\LoggablePipe' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Contracts/LoggablePipe.php',
+        'Spatie\\Activitylog\\EventLogBag' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/EventLogBag.php',
+        'Spatie\\Activitylog\\Exceptions\\CouldNotLogActivity' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Exceptions/CouldNotLogActivity.php',
+        'Spatie\\Activitylog\\Exceptions\\CouldNotLogChanges' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Exceptions/CouldNotLogChanges.php',
+        'Spatie\\Activitylog\\Exceptions\\InvalidConfiguration' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Exceptions/InvalidConfiguration.php',
+        'Spatie\\Activitylog\\Facades\\CauserResolver' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Facades/CauserResolver.php',
+        'Spatie\\Activitylog\\Facades\\LogBatch' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Facades/LogBatch.php',
+        'Spatie\\Activitylog\\LogBatch' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/LogBatch.php',
+        'Spatie\\Activitylog\\LogOptions' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/LogOptions.php',
+        'Spatie\\Activitylog\\Models\\Activity' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Models/Activity.php',
+        'Spatie\\Activitylog\\Traits\\CausesActivity' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Traits/CausesActivity.php',
+        'Spatie\\Activitylog\\Traits\\LogsActivity' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Traits/LogsActivity.php',
         'Spatie\\Backtrace\\Arguments\\ArgumentReducers' => __DIR__ . '/..' . '/spatie/backtrace/src/Arguments/ArgumentReducers.php',
         'Spatie\\Backtrace\\Arguments\\ProvidedArgument' => __DIR__ . '/..' . '/spatie/backtrace/src/Arguments/ProvidedArgument.php',
         'Spatie\\Backtrace\\Arguments\\ReduceArgumentPayloadAction' => __DIR__ . '/..' . '/spatie/backtrace/src/Arguments/ReduceArgumentPayloadAction.php',
@@ -6379,6 +6430,10 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'Spatie\\LaravelIgnition\\Support\\StringComparator' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Support/StringComparator.php',
         'Spatie\\LaravelIgnition\\Views\\BladeSourceMapCompiler' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Views/BladeSourceMapCompiler.php',
         'Spatie\\LaravelIgnition\\Views\\ViewExceptionMapper' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Views/ViewExceptionMapper.php',
+        'Spatie\\LaravelPackageTools\\Commands\\InstallCommand' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Commands/InstallCommand.php',
+        'Spatie\\LaravelPackageTools\\Exceptions\\InvalidPackage' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Exceptions/InvalidPackage.php',
+        'Spatie\\LaravelPackageTools\\Package' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Package.php',
+        'Spatie\\LaravelPackageTools\\PackageServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/PackageServiceProvider.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\Attribute\\AsCommand' => __DIR__ . '/..' . '/symfony/console/Attribute/AsCommand.php',

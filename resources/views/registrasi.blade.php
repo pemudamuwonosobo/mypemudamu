@@ -645,15 +645,22 @@
                         </div>
 
                         <div class="text-right mt-2">
-
-                            <div class="text-right">
-                                <button type="submit" class="btn bg-primary-300 btn-labeled btn-labeled-left"><b><i
-                                            class="icon-paperplane"></i></b>Simpan</button>
+                            <div class="row">
+                                <div class="ml-auto d-flex">
+                                    <div class="text-right ml-2">
+                                        <a href="{{ route('home') }}"
+                                            class="btn bg-grey-300 btn-labeled btn-labeled-left">
+                                            <b><i class="icon-rotate-ccw3"></i></b>Kembali
+                                        </a>
+                                    </div>
+                                    <div class="text-right ml-2">
+                                        <button type="submit"
+                                            class="btn bg-primary-300 btn-labeled btn-labeled-left">
+                                            <b><i class="icon-paperplane"></i></b>Simpan
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            {{-- <button type="button" class="btn bg-grey-300 btn-labeled btn-labeled-left"
-                                                wire:click="back_store()"><b><i class="icon-rotate-ccw3"></i></b>Kembali</button>
-                                            <button type="button" class="btn bg-warning-600 btn-labeled btn-labeled-left"
-                                                wire:click="updateForm()"><b><i class="icon-paperplane"></i></b>Update</button> --}}
                         </div>
                     </form>
 

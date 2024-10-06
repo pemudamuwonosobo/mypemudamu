@@ -70,7 +70,7 @@
 
              <!-- Forms -->
              <li
-                 class="nav-item nav-item-submenu {{ Request::is(['gol_darah', 'profesi', 'pekerjaan', 'user', 'role']) ? 'nav-item-expanded nav-item-open' : '' }}">
+                 class="nav-item nav-item-submenu {{ Request::is(['gol_darah', 'profesi', 'pekerjaan', 'user', 'role', 'aktivitas_user']) ? 'nav-item-expanded nav-item-open' : '' }}">
                  <a href="#" class="nav-link"><i class="icon-cogs"></i> <span>Setting</span></a>
 
                  <ul class="nav nav-group-sub" data-submenu-title="Layouts">
@@ -90,6 +90,9 @@
                      </li>
                      <li class="nav-item"><a href="{{ url('role') }}"
                              class="nav-link {{ Request::is(['role']) ? 'active' : '' }}">Role</a></li>
+                     <li class="nav-item"><a href="{{ url('aktivitas_user') }}"
+                             class="nav-link {{ Request::is(['aktivitas_user']) ? 'active' : '' }}">Aktivitas User</a>
+                     </li>
                  </ul>
              </li>
          @endif

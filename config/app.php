@@ -169,6 +169,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
+        Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
 
     ])->toArray(),
 
@@ -187,6 +188,7 @@ return [
         // 'Example' => App\Facades\Example::class,
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+        'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
     ])->toArray(),
 
 ];

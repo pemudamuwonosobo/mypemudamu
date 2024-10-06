@@ -36,8 +36,8 @@ class StoreAnggotaRequest extends FormRequest
             'profesi_lain' => 'nullable',
             'tempat_kerja' => 'nullable',
             'pekerjaan' => 'required',
-            'foto' => 'required',
-            // |mimes:jpeg,png,jpg,gif,svg|max:2048
+            'foto' => 'required|mimes:jpeg,png,jpg|max:2048',
+
         ];
     }
 
@@ -63,8 +63,8 @@ class StoreAnggotaRequest extends FormRequest
             'profesi.required' => 'Profesi wajib diisi !',
             'pekerjaan.required' => 'Pekerjaan wajib diisi !',
             'foto.required' => 'Foto wajib diisi !',
-            // 'foto.mimes' => 'Foto harus memiliki format: jpeg, png, jpg, gif, svg!',
-            // 'foto.max' => 'Ukuran foto maksimal adalah 2MB!',
+            'foto.mimes' => 'Foto harus memiliki format: jpeg, png, jpg!',
+            'foto.max' => 'Ukuran foto maksimal adalah 2MB!',
         ];
     }
 }

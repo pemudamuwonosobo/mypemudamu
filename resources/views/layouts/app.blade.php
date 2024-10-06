@@ -93,6 +93,7 @@
 
 
 
+    {!! htmlScriptTagJsApi() !!}
 </head>
 
 <body>

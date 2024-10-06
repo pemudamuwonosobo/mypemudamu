@@ -28,6 +28,7 @@ use App\Http\Controllers\IdcardController;
 use App\Http\Controllers\RegistrasiController;
 use App\Livewire\Client\EventClient;
 use App\Livewire\Event\Presensi;
+use App\Livewire\Setting\AktivitasUser;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/user', User::class)->middleware('only_admin');
     Route::get('/report', Report::class)->middleware('only_operator');
     Route::get('/event', Event::class)->name('event');
+    Route::get('/aktivitas_user', AktivitasUser::class)->name('aktivitas_user');
 
     //client
     Route::get('/client', Client::class)->middleware('only_client');
@@ -92,7 +94,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('only_guest')->group(function () {
     //Route Registrasi Anggota
-    Route::get('/registrasi', [RegistrasiController::class, 'index'])->name('registrasi.index');
+    Route::get('/registrasi', [RegistrasiController::class, 'index'])->name('registrasi');
     Route::post('/registrasi/store', [RegistrasiController::class, 'store'])->name('registrasi.store');
     Route::post('getRanting', [RegistrasiController::class, 'getRanting'])->name('getRanting');
     Route::post('form', [RegistrasiController::class, 'store'])->name('form.store');

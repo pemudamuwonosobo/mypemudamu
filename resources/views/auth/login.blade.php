@@ -90,48 +90,81 @@
                                             alt="" width="100px" height="100px">
                                         <h5 class="mb-0 mt-2">Login ke My-PemudaMu</h5>
                                         <span class="d-block text-muted">Masukan akun anda</span>
+
+                                        <!-- Tampilkan pesan error umum -->
                                         @if ($errors->has('error'))
                                             <div class="alert alert-danger">
                                                 {{ $errors->first('error') }}
                                             </div>
                                         @endif
                                     </div>
+
+                                    <!-- Tampilkan pesan status jika ada -->
                                     @if (session('status'))
                                         <div class="alert alert-success">
                                             {{ session('message') }}
                                         </div>
                                     @endif
 
+                                    <!-- Input untuk email -->
                                     <div class="form-group form-group-feedback form-group-feedback-left">
                                         <input type="email" class="form-control" name="email" id="email"
                                             placeholder="Username" required>
                                         <div class="form-control-feedback">
                                             <i class="icon-user text-muted"></i>
                                         </div>
+                                        <!-- Tampilkan error untuk email -->
+                                        @error('email')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
+                                    <!-- Input untuk password -->
                                     <div class="form-group form-group-feedback form-group-feedback-left">
                                         <input type="password" class="form-control" name="password" id="password" required
                                             placeholder="Password">
                                         <div class="form-control-feedback">
                                             <i class="icon-lock2 text-muted"></i>
                                         </div>
+                                        <!-- Tampilkan error untuk password -->
+                                        @error('password')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
+                                    <!-- Input untuk reCAPTCHA -->
+                                    <div class="form-group form-group-feedback form-group-feedback-left">
+                                        {!! htmlFormSnippet() !!}
+                                        <!-- Tampilkan error untuk reCAPTCHA -->
+                                        @error('g-recaptcha-response')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <!-- Tombol submit -->
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">Masuk <i
                                                 class="icon-circle-right2 ml-2"></i></button>
                                     </div>
 
+                                    <!-- Tombol kembali -->
                                     <div class="form-group">
                                         <a href="{{ route('home') }}" class="btn btn-secondary btn-block"><i
                                                 class="icon-circle-left2 mr-2"></i>Kembali</a>
                                     </div>
 
+                                    <div class="form-group text-center mt-3">
+                                        <p>Belum punya akun?
+                                            <a href="{{ route('registrasi') }}"
+                                                class="font-weight-bold text-primary">Silahkan
+                                                Registrasi</a>
+                                        </p>
+                                    </div>
 
                                 </div>
                             </div>
                         </form>
+
                         <!-- /login form -->
 
                     </div>

@@ -21,11 +21,24 @@ class AuthController extends Controller
 
     public function authenticating(Request $request)
     {
-        // Validasi data input
-        $credentials = $request->validate([
+        // Validasi bahwa reCAPTCHA telah diisi
+        if (!$request->has('g-recaptcha-response') || empty($request->input('g-recaptcha-response'))) {
+            return redirect()->back()
+                ->withErrors(['g-recaptcha-response' => 'Silakan pilih reCAPTCHA untuk melanjutkan.'])
+                ->withInput(); // Membawa kembali input sebelumnya kecuali password
+        }
+
+        // Validasi data input, termasuk reCAPTCHA
+        $request->validate([
             'email' => ['required', 'email'], // Mengharuskan username berupa email
             'password' => ['required'],
+            'g-recaptcha-response' => ['required', 'recaptcha'], // Validasi reCAPTCHA
+        ], [
+            'g-recaptcha-response.required' => 'Silakan pilih reCAPTCHA untuk melanjutkan.', // Pesan error jika reCAPTCHA belum dipilih
         ]);
+
+        // Membuat array $credentials hanya untuk email dan password
+        $credentials = $request->only('email', 'password');
 
         // Mencoba untuk mengautentikasi pengguna
         if (Auth::attempt($credentials)) {
@@ -35,30 +48,40 @@ class AuthController extends Controller
             // Mendapatkan pengguna yang telah diautentikasi
             $user = Auth::user();
 
-            // dd($user);
-            // Memeriksa role dan mengarahkan ke halaman yang sesuai
-            if (Auth::user()->role_id !== 4) {
-                return redirect('dashboard');
+            // Cek role dan log activity ke database berdasarkan role
+            switch ($user->role_id) {
+                case 1: // Superadmin
+                    activity()->causedBy($user)
+                        ->event('Login')->log('Superadmin melakukan login');
+                    return redirect('dashboard');
+
+                case 2: // Admin Daerah
+                    activity()->causedBy($user)->event('Login')->log('Admin daerah melakukan login');
+                    return redirect('dashboard');
+
+                case 3: // Admin Cabang
+                    $cabangNama = optional(auth()->user()->cabangs)->cabang_nm ?? 'tidak diketahui';
+                    activity()->causedBy($user)->event('Login')->log('Admin PCPM ' . $cabangNama . ' melakukan login');
+                    return redirect('dashboard');
+
+                case 4: // User Cabang
+                    $email = $user->email;
+                    $anggota = Anggota::where('email', $email)->first();
+
+                    if ($anggota && $anggota->akun == 1) {
+                        Auth::logout();
+                        return redirect('/login')->withErrors(['error' => 'Akun anda belum aktif. Silakan menghubungi admin cabang.']);
+                    } else {
+                        $userNama = $anggota->nama ?? 'tidak diketahui';
+                        activity()->causedBy($user)->event('Login')->log('User ' . $userNama . ' melakukan login');
+                        return redirect('client');
+                    }
+
+
+                default: // Jika role tidak sesuai
+                    return redirect('default-route');
             }
-
-            if (Auth::check() && Auth::user()->role_id == 4) {
-                $email = Auth::user()->email;
-                $anggota = Anggota::where('email', $email)->first();
-
-                if ($anggota && $anggota->akun == 1) {
-                    Auth::logout();
-                    return redirect('/login')->withErrors(['error' => 'Akun anda belum aktif. Silakan menghubungi admin cabang.']);
-                } else {
-                    return redirect('client');
-                }
-            }
-
-
-            // Arahkan ke halaman default jika role tidak cocok
-            return redirect('default-route');
         }
-
-
 
 
         // Jika autentikasi gagal, beri pesan error dan arahkan kembali ke halaman login
@@ -66,6 +89,9 @@ class AuthController extends Controller
         Session::flash('message', 'Akun tidak ditemukan');
         return redirect('/login');
     }
+
+
+
 
     public function logout(Request $request)
     {
