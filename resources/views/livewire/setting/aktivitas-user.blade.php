@@ -58,17 +58,23 @@
                                     <tr>
                                         <td class="text-center">{{ $loop->index + $lastactivityubah->firstItem() }}</td>
                                         <td class="text-center">
-                                            @if ($value->user->role_id == 1)
-                                                Superadmin
-                                            @elseif ($value->user->role_id == 2)
-                                                Admin Daerah
-                                            @elseif ($value->user->role_id == 3)
-                                                Admin PCPM {{ $value->user->cabangs->cabang_nm }}
-                                            @elseif ($value->user->role_id == 4)
-                                                {{ $value->user->anggota->nama ?? 'Tidak ada anggota' }}
+                                            @if ($value->user)
+                                                @if ($value->user->role_id == 1)
+                                                    Superadmin
+                                                @elseif ($value->user->role_id == 2)
+                                                    Admin Daerah
+                                                @elseif ($value->user->role_id == 3)
+                                                    Admin PCPM
+                                                    {{ $value->user->cabangs->cabang_nm ?? 'Tidak ada cabang' }}
+                                                @elseif ($value->user->role_id == 4)
+                                                    {{ $value->user->anggota->nama ?? 'Tidak ada anggota' }}
+                                                @else
+                                                    Role tidak diketahui
+                                                @endif
                                             @else
-                                                Role tidak diketahui
+                                                Pengguna tidak ditemukan
                                             @endif
+
                                         </td>
 
                                         <td>{{ $value->event }}</td>
@@ -140,17 +146,23 @@
                                         <td class="text-center">{{ $loop->index + $lastactivitylogin->firstItem() }}
                                         </td>
                                         <td class="text-center">
-                                            @if ($value->user->role_id == 1)
-                                                Superadmin
-                                            @elseif ($value->user->role_id == 2)
-                                                Admin Daerah
-                                            @elseif ($value->user->role_id == 3)
-                                                Admin PCPM {{ $value->user->cabangs->cabang_nm }}
-                                            @elseif ($value->user->role_id == 4)
-                                                {{ $value->user->anggota->nama ?? 'Tidak ada anggota' }}
+                                            @if ($value->user)
+                                                @if ($value->user->role_id == 1)
+                                                    Superadmin
+                                                @elseif ($value->user->role_id == 2)
+                                                    Admin Daerah
+                                                @elseif ($value->user->role_id == 3)
+                                                    Admin PCPM
+                                                    {{ $value->user->cabangs->cabang_nm ?? 'Tidak ada cabang' }}
+                                                @elseif ($value->user->role_id == 4)
+                                                    {{ $value->user->anggota->nama ?? 'Tidak ada anggota' }}
+                                                @else
+                                                    Role tidak diketahui
+                                                @endif
                                             @else
-                                                Role tidak diketahui
+                                                Pengguna tidak ditemukan
                                             @endif
+
                                         </td>
                                         <td>{{ $value->description }}</td>
                                         <td class="text-center">{{ $value->created_at->format('d-m-Y H:i:s') }}</td>
