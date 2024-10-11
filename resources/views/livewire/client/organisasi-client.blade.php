@@ -61,6 +61,15 @@
                                             <option value="PD">PD - Pimpian Daerah</option>
                                             <option value="PW">PW - Pimpinan Wilayah</option>
                                             <option value="PP">PP - Pimpinan Pusat</option>
+                                            <option value="Korkom">Komisariat - Pimpinan Komisariat</option>
+                                            <option value="DPC">DPC - Dewan Pimpinan Cabang</option>
+                                            <option value="DPD">DPD - Dewan Pimpinan Daerah</option>
+                                            <option value="DPP">DPP - Dewan Pimpinan Pusat</option>
+                                            <option value="Qobilah">Qobilah</option>
+                                            <option value="Kwarcab">Kwartir Cabang</option>
+                                            <option value="Kwarda">Kwartir Daerah</option>
+                                            <option value="Kwarwil">Kwartir Wilayah</option>
+                                            <option value="Kwarpus">Kwartir Pusat</option>
                                         </select>
                                         @error('tingkat')
                                             <span class="form-text text-danger">{{ $message }}</span>

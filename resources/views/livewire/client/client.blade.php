@@ -1,8 +1,10 @@
 <div>
     <div class="col-md-12">
         <div class="profile-cover">
-            <div class="profile-cover-img" style="background-image: url('{{ asset('Assets/banner/banner1.jpg') }}');">
+            <div class="profile-cover-img"
+                style="background-image: url('{{ asset('Assets/banner/banner1.jpg') }}'); background-position: center center;">
             </div>
+
             <div class="media align-items-center text-center text-md-left flex-column flex-md-row m-0">
                 <div class="card-img-actions d-inline-block mb-3">
                     <img src="{{ asset('storage/' . $dataclient->foto) }}" class="border-white rounded-circle"
@@ -634,65 +636,32 @@
                         <!-- Sales stats -->
                         <div class="card">
                             {{-- dataview --}}
-                            <div class="card-header header-elements-sm-inline">
-                                <h6 class="card-title">Profil Saya</h6>
+                            <div class="card-header  header-elements-inline">
+                                <h5 class="card-title">Profil Saya</h5>
                                 <div class="header-elements">
                                     <div class="list-icons ml-3">
-                                        <div class="list-icons-item dropdown">
-                                            <a href="#" class="list-icons-item dropdown-toggle"
-                                                data-toggle="dropdown"><i class="icon-menu7"></i></a>
-                                            <div class="dropdown-menu">
-                                                <a href="#" class="dropdown-item"
-                                                    wire:click="edit({{ $dataclient->id }})"> <i
-                                                        class="icon-pencil"></i>
-                                                    Ubah Profil</a>
-                                                @if ($dataclient->status == 'Terverifikasi')
-                                                    <a href="#" class="dropdown-item idcarddownloadButton"
-                                                        type="button"
-                                                        data-id="{{ \Illuminate\Support\Facades\Crypt::encryptString($dataclient->id) }}"><i
-                                                            class="icon-vcard"></i>
-                                                        e-KTA</a>
-                                                @endif
-                                                <div class="dropdown-divider"></div>
-                                                <a href="/logout" class="dropdown-item"><i class="icon-switch2"></i>
-                                                    Logout</a>
-                                            </div>
+                                        <div class="p-2 bd-highlight ml-auto d-flex align-items-center">
+                                            <p><button type="button"
+                                                    class="btn btn-warning btn-labeled btn-labeled-left btn-sm"
+                                                    wire:click="edit({{ $dataclient->id }})"><b><i
+                                                            class="icon-pencil"></i></b> Edit Profil</button></p>
+
                                         </div>
+                                        @if ($dataclient->status == 'Terverifikasi')
+                                            <div class="p-2 bd-highlight  ml-auto d-flex align-items-center">
+                                                <p><button href="#" type="button"
+                                                        class="btn btn-primary btn-labeled btn-labeled-left btn-sm idcarddownloadButton"
+                                                        data-id="{{ \Illuminate\Support\Facades\Crypt::encryptString($dataclient->id) }}"><b><i
+                                                                class="icon-vcard"></i></b>
+                                                        e-KTA</button></p>
+
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
+
                             </div>
-                            {{-- <div class="card-header"> --}}
-                            <div class="d-flex bd-highlight">
-                                <div class="p-2 w-100 bd-highlight">
-                                    <h6 class="card-title"></h6>
-                                </div>
 
-                                {{-- <div class="ml-md-3 mt-2 mt-md-0">
-                                        <ul class="list-inline list-inline-condensed mb-0">
-                                            <li class="list-inline-item"><a href="/logout" class="btn btn-light border-transparent"><i
-                                                        class="icon-switch2"></i> Logout</a></li>
-
-                                        </ul>
-                                    </div> --}}
-                                {{-- <div class="p-2 bd-highlight ml-auto d-flex align-items-center">
-                                        <p><button type="button"
-                                                class="btn btn-warning btn-labeled btn-labeled-left btn-sm"
-                                                wire:click="edit({{ $dataclient->id }})"><b><i
-                                                        class="icon-pencil"></i></b> Edit Profil</button></p>
-
-                                    </div> --}}
-                                {{-- @if ($dataclient->status == 'Terverifikasi')
-                                        <div class="p-2 bd-highlight  ml-auto d-flex align-items-center">
-                                            <p><button href="#" type="button"
-                                                    class="btn btn-primary btn-labeled btn-labeled-left btn-sm idcarddownloadButton"
-                                                    data-id="{{ \Illuminate\Support\Facades\Crypt::encryptString($dataclient->id) }}"><b><i
-                                                            class="icon-vcard"></i></b>
-                                                    e-KTA</button></p>
-
-                                        </div>
-                                    @endif --}}
-                            </div>
-                            {{-- </div> --}}
 
                             <div class="container ml-2">
                                 <div class="row">
@@ -905,8 +874,8 @@
                                     <div class="card-body">
                                         <div class="d-sm-flex align-item-sm-center flex-sm-nowrap">
                                             <div>
-                                                <h6 class="font-weight-semibold"><span
-                                                        class="badge badge-danger">Riwayat Pendidikan</span></h6>
+                                                <h3 class="font-weight-semibold"><span
+                                                        class="badge badge-danger">Riwayat Pendidikan</span></h3>
                                                 <table class="table">
                                                     <tbody>
                                                         @foreach ($riwayat_pendidikan as $value)
@@ -930,10 +899,12 @@
                                     <div class="card-body">
                                         <div class="d-sm-flex align-item-sm-center flex-sm-nowrap">
                                             <div>
-                                                <h6 class="font-weight-semibold"><span
-                                                        class="badge badge-success">Riwayat Orgaisasi</span></h6>
+                                                <h3 class="font-weight-semibold"><span
+                                                        class="badge badge-success">Riwayat Orgaisasi</span></h3>
                                                 <table class="table">
-                                                    <span>Organisasi Internal</span>
+                                                    @if ($riwayat_organisasi_internal->isNotEmpty())
+                                                        <span><strong> Organisasi Internal </strong></span>
+                                                    @endif
                                                     <tbody>
                                                         @foreach ($riwayat_organisasi_internal as $value)
                                                             <tr>
@@ -946,20 +917,24 @@
                                                         @endforeach
                                                     </tbody>
                                                 </table>
+
                                                 <table class="table">
-                                                    <span>Organisasi Eksternal</span>
+                                                    @if ($riwayat_organisasi_eksternal->isNotEmpty())
+                                                        <span><strong> Organisasi Eksternal </strong></span>
+                                                    @endif
                                                     <tbody>
                                                         @foreach ($riwayat_organisasi_eksternal as $value)
                                                             <tr>
                                                                 <td>- {{ $value->tingkat }}
                                                                     {{ $value->nama_organisasi }}
                                                                     <b>( {{ $value->periode_awal }} -
-                                                                        {{ $value->periode_akhir }}) </b>
+                                                                        {{ $value->periode_akhir }} )</b>
                                                                 </td>
                                                             </tr>
                                                         @endforeach
                                                     </tbody>
                                                 </table>
+
                                             </div>
                                         </div>
                                     </div>
@@ -970,8 +945,8 @@
                                     <div class="card-body">
                                         <div class="d-sm-flex align-item-sm-center flex-sm-nowrap">
                                             <div>
-                                                <h6 class="font-weight-semibold"><span
-                                                        class="badge badge-primary">Riwayat Perkaderan</span></h6>
+                                                <h3 class="font-weight-semibold"><span
+                                                        class="badge badge-primary">Riwayat Perkaderan</span></h3>
                                                 <table class="table">
                                                     <tbody>
                                                         @foreach ($riwayat_perkaderan as $value)

@@ -3,6 +3,9 @@
     @include('components.layouts.part-layout.main-navbar')
     @include('components.layouts.part-layout.sidebar')
 @endif
+@if (Auth::user()->role_id == 4)
+    @include('components.layouts.part-layout.main-navbar-client')
+@endif
 <!-- Main content -->
 <div class="content-wrapper">
     <!-- Page header -->
