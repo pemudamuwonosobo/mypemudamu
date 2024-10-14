@@ -6,29 +6,30 @@ use App\Livewire\Setting\Role;
 use App\Livewire\Setting\User;
 use App\Livewire\Admin\Anggota;
 use App\Livewire\Client\Client;
+use App\Livewire\Kta\DesainKta;
+use App\Livewire\Event\Presensi;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Setting\Profesi;
 use App\Livewire\Admin\Organisasi;
 use App\Livewire\Admin\Pendidikan;
 use App\Livewire\Admin\Perkaderan;
 use App\Livewire\Setting\Pekerjaan;
+use App\Livewire\Client\EventClient;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Livewire\Admin\CabangRanting;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Setting\AktivitasUser;
 use App\Livewire\Setting\GolonganDarah;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\EventCardController;
 use App\Http\Controllers\HomeController;
 use App\Livewire\Setting\ChangePassword;
 use App\Livewire\Client\OrganisasiClient;
 use App\Livewire\Client\PendidikanClient;
 use App\Livewire\Client\PerkaderanClient;
 use App\Http\Controllers\IdcardController;
+use App\Http\Controllers\EventCardController;
 use App\Http\Controllers\RegistrasiController;
-use App\Livewire\Client\EventClient;
-use App\Livewire\Event\Presensi;
-use App\Livewire\Setting\AktivitasUser;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +79,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/client-perkaderan', PerkaderanClient::class)->middleware('only_client');
     Route::get('/client-event', EventClient::class)->middleware('only_client');
     Route::get('/form', [Client::class, 'create'])->name('form.create')->middleware('only_client');
+    Route::get('/Kta', DesainKta::class)->name('desain-kta')->middleware('only_client');
 
     //id-card
     Route::get('idcard', [IdcardController::class, 'index'])->name('idcard'); //print

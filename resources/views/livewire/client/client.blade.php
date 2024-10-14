@@ -634,234 +634,270 @@
                             @endif
                         </div>
                         <!-- Sales stats -->
-                        <div class="card">
-                            {{-- dataview --}}
-                            <div class="card-header  header-elements-inline">
-                                <h5 class="card-title">Profil Saya</h5>
-                                <div class="header-elements">
-                                    <div class="list-icons ml-3">
-                                        <div class="p-2 bd-highlight ml-auto d-flex align-items-center">
-                                            <p><button type="button"
-                                                    class="btn btn-warning btn-labeled btn-labeled-left btn-sm"
-                                                    wire:click="edit({{ $dataclient->id }})"><b><i
-                                                            class="icon-pencil"></i></b> Edit Profil</button></p>
-
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="card border-left-3 border-left-danger rounded-left-0">
+                                    <div class="card-header  header-elements-inline">
+                                        <h5 class="card-title">Profil Saya</h5>
+                                        <div class="header-elements">
+                                            <div class="list-icons ml-3">
+                                                <div class="bd-highlight ml-auto d-flex align-items-center">
+                                                    <p><button type="button"
+                                                            class="btn btn-warning btn-labeled btn-labeled-left btn-sm"
+                                                            wire:click="edit({{ $dataclient->id }})"><b><i
+                                                                    class="icon-pencil"></i></b> Edit
+                                                            Profil</button></p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        @if ($dataclient->status == 'Terverifikasi')
-                                            <div class="p-2 bd-highlight  ml-auto d-flex align-items-center">
-                                                <p><button href="#" type="button"
-                                                        class="btn btn-primary btn-labeled btn-labeled-left btn-sm idcarddownloadButton"
-                                                        data-id="{{ \Illuminate\Support\Facades\Crypt::encryptString($dataclient->id) }}"><b><i
-                                                                class="icon-vcard"></i></b>
-                                                        e-KTA</button></p>
+                                    </div>
+
+                                    <div class="container ml-2">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row mb-2">
+                                                    <div class="col-md-4">
+                                                        Nama
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        : {{ $dataclient->gelar_depan }}
+                                                        @if (!empty($dataclient->gelar_depan))
+                                                            .&nbsp;
+                                                        @endif
+                                                        {{ $dataclient->nama }}
+                                                        @if (!empty($dataclient->gelar_belakang))
+                                                            ,&nbsp;
+                                                        @endif
+                                                        {{ $dataclient->gelar_belakang }}
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-md-4">
+                                                        Cabang
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        : {{ $dataclient->Cabang->cabang_nm }}
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-md-4">
+                                                        Ranting
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        : {{ $dataclient->Ranting->cabang_nm }}
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-md-4">
+                                                        NIK
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        : {{ $dataclient->nik }}
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-md-4">
+                                                        TTL
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        : {{ $dataclient->tempat_lahir }},
+                                                        {{ \Carbon\Carbon::parse($dataclient->tgl_lahir)->isoFormat('DD MMMM YYYY') }}
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-md-4">
+                                                        E-mail
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        : {{ $dataclient->email }}
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-md-4">
+                                                        No. HP
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        : {{ $dataclient->no_telp }}
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-md-4">
+                                                        Alamat
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        : {{ $dataclient->alamat }}
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-md-4">
+                                                        Pendidikan Terakhir
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        : {{ $dataclient->pendidikan_terakhir }}
+                                                    </div>
+                                                </div>
 
                                             </div>
-                                        @endif
+                                            <div class="col-md-6">
+                                                <div class="row mb-2">
+                                                    <div class="col-md-4">
+                                                        Golongan Darah
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        : {{ $dataclient->GolDarah->nama }}
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-md-8">
+                                                        @if ($dataclient->is_nbm == 'sudah')
+                                                            <span class="badge badge-success capitalize"
+                                                                style="text-transform: capitalize;">{{ $dataclient->is_nbm }}</span>
+                                                            Memiliki NBM
+                                                        @else
+                                                            <span class="badge badge-danger capitalize"
+                                                                style="text-transform: capitalize;">{{ $dataclient->is_nbm }}</span>
+                                                            Memiliki NBM
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2">
+                                                    @if ($dataclient->is_nbm == 'sudah')
+                                                        <div class="col-md-4">
+                                                            No. NBM
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            : {{ $dataclient->no_nbm }}
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-md-8">
+                                                        @if ($dataclient->is_ba == 'sudah')
+                                                            <span class="badge badge-success capitalize"
+                                                                style="text-transform: capitalize;">{{ $dataclient->is_ba }}</span>
+                                                            Mengikuti Baitul Arqom
+                                                        @else
+                                                            <span class="badge badge-danger capitalize"
+                                                                style="text-transform: capitalize;">{{ $dataclient->is_ba }}</span>
+                                                            Mengikuti Baitul Arqom
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2">
+                                                    @if ($dataclient->is_ba == 'sudah')
+                                                        <div class="col-md-4">
+                                                            Tahun Baitul Arqom
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            : {{ $dataclient->tahun_ba }}
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-md-4">
+                                                        Status Perkawinan
+                                                    </div>
+                                                    <div class="col-md-8" style="text-transform: capitalize;">
+                                                        : {{ $dataclient->status_kawin }}
+                                                    </div>
+                                                </div>
+                                                @if ($dataclient->profesi !== '17')
+                                                    <div class="row mb-2">
+                                                        <div class="col-md-4">
+                                                            Profesi
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            : {{ $dataclient->Profesi->nama }}
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <div class="row mb-2">
+                                                        <div class="col-md-4">
+                                                            Profesi
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            : {{ $dataclient->profesi_lain }}
+                                                        </div>
+                                                    </div>
+                                                @endif
+
+                                                @if ($dataclient->pekerjaan !== '4')
+                                                    <div class="row mb-2">
+                                                        <div class="col-md-4">
+                                                            Pekerjaan
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            : {{ $dataclient->Pekerjaan->nama }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-2">
+                                                        <div class="col-md-4">
+                                                            Tempat Kerja
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            : {{ $dataclient->tempat_kerja }}
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <div class="row mb-2">
+                                                        <div class="col-md-4">
+                                                            Pekerjaan
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            : {{ $dataclient->pekerjaan }}
+                                                        </div>
+                                                    </div>
+                                                @endif
+
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
                             </div>
-
-
-                            <div class="container ml-2">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="row mb-2">
-                                            <div class="col-md-4">
-                                                Nama
-                                            </div>
-                                            <div class="col-md-8">
-                                                : {{ $dataclient->gelar_depan }}
-                                                @if (!empty($dataclient->gelar_depan))
-                                                    .&nbsp;
-                                                @endif
-                                                {{ $dataclient->nama }}
-                                                @if (!empty($dataclient->gelar_belakang))
-                                                    ,&nbsp;
-                                                @endif
-                                                {{ $dataclient->gelar_belakang }}
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            <div class="col-md-4">
-                                                Cabang
-                                            </div>
-                                            <div class="col-md-8">
-                                                : {{ $dataclient->Cabang->cabang_nm }}
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            <div class="col-md-4">
-                                                Ranting
-                                            </div>
-                                            <div class="col-md-8">
-                                                : {{ $dataclient->Ranting->cabang_nm }}
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            <div class="col-md-4">
-                                                NIK
-                                            </div>
-                                            <div class="col-md-8">
-                                                : {{ $dataclient->nik }}
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            <div class="col-md-4">
-                                                TTL
-                                            </div>
-                                            <div class="col-md-8">
-                                                : {{ $dataclient->tempat_lahir }},
-                                                {{ \Carbon\Carbon::parse($dataclient->tgl_lahir)->isoFormat('DD MMMM YYYY') }}
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            <div class="col-md-4">
-                                                E-mail
-                                            </div>
-                                            <div class="col-md-8">
-                                                : {{ $dataclient->email }}
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            <div class="col-md-4">
-                                                No. HP
-                                            </div>
-                                            <div class="col-md-8">
-                                                : {{ $dataclient->no_telp }}
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            <div class="col-md-4">
-                                                Alamat
-                                            </div>
-                                            <div class="col-md-8">
-                                                : {{ $dataclient->alamat }}
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            <div class="col-md-4">
-                                                Pendidikan Terakhir
-                                            </div>
-                                            <div class="col-md-8">
-                                                : {{ $dataclient->pendidikan_terakhir }}
-                                            </div>
+                            <div class="col-lg-4">
+                                <div class="card border-left-3 border-left-danger rounded-left-0 mb-1">
+                                    <div class="card-header  header-elements-inline ">
+                                        <div class="bd-highlight ml-auto d-flex align-items-center">
+                                            <p>
+                                                <button href="#" type="button"
+                                                    class="btn btn-labeled btn-labeled-left btn-sm idcarddownloadButton
+                                                    {{ $dataclient->status == 'Terverifikasi' ? 'btn-primary' : 'btn-secondary' }}"
+                                                    data-id="{{ \Illuminate\Support\Facades\Crypt::encryptString($dataclient->id) }}"
+                                                    @if ($dataclient->status != 'Terverifikasi') disabled @endif>
+                                                    <b><i class="icon-vcard"></i></b> e-KTA
+                                                </button>
+                                            </p>
                                         </div>
 
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="row mb-2">
-                                            <div class="col-md-4">
-                                                Golongan Darah
-                                            </div>
-                                            <div class="col-md-8">
-                                                : {{ $dataclient->GolDarah->nama }}
-                                            </div>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <div>
+                                            <livewire:kta.desain-kta />
                                         </div>
-                                        <div class="row mb-2">
-                                            <div class="col-md-8">
-                                                @if ($dataclient->is_nbm == 'sudah')
-                                                    <span class="badge badge-success capitalize"
-                                                        style="text-transform: capitalize;">{{ $dataclient->is_nbm }}</span>
-                                                    Memiliki NBM
-                                                @else
-                                                    <span class="badge badge-danger capitalize"
-                                                        style="text-transform: capitalize;">{{ $dataclient->is_nbm }}</span>
-                                                    Memiliki NBM
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            @if ($dataclient->is_nbm == 'sudah')
-                                                <div class="col-md-4">
-                                                    No. NBM
-                                                </div>
-                                                <div class="col-md-8">
-                                                    : {{ $dataclient->no_nbm }}
-                                                </div>
+
+                                        <div class="mr-3 mt-3 mb-3">
+                                            @if ($dataclient->status == 'Terverifikasi')
+                                                <a href="#"
+                                                    class="btn bg-transparent border-success text-success rounded-round border-2 btn-icon"><i
+                                                        class="icon-checkmark3"></i> Terverifikasi</a>
+                                            @elseif ($dataclient->status == 'Validasi')
+                                                <a href="#"
+                                                    class="btn bg-transparent border-primary text-primary rounded-round border-2 btn-icon"><i
+                                                        class="icon-checkmark-circle"></i> Validasi</a>
+                                            @else
+                                                <a href="#"
+                                                    class="btn bg-transparent border-danger text-danger rounded-round border-2 btn-icon"><i
+                                                        class="icon-x"></i> Draft</a>
                                             @endif
                                         </div>
-                                        <div class="row mb-2">
-                                            <div class="col-md-8">
-                                                @if ($dataclient->is_ba == 'sudah')
-                                                    <span class="badge badge-success capitalize"
-                                                        style="text-transform: capitalize;">{{ $dataclient->is_ba }}</span>
-                                                    Mengikuti Baitul Arqom
-                                                @else
-                                                    <span class="badge badge-danger capitalize"
-                                                        style="text-transform: capitalize;">{{ $dataclient->is_ba }}</span>
-                                                    Mengikuti Baitul Arqom
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            @if ($dataclient->is_ba == 'sudah')
-                                                <div class="col-md-4">
-                                                    Tahun Baitul Arqom
-                                                </div>
-                                                <div class="col-md-8">
-                                                    : {{ $dataclient->tahun_ba }}
-                                                </div>
-                                            @endif
-                                        </div>
-                                        <div class="row mb-2">
-                                            <div class="col-md-4">
-                                                Status Perkawinan
-                                            </div>
-                                            <div class="col-md-8" style="text-transform: capitalize;">
-                                                : {{ $dataclient->status_kawin }}
-                                            </div>
-                                        </div>
-                                        @if ($dataclient->profesi !== '17')
-                                            <div class="row mb-2">
-                                                <div class="col-md-4">
-                                                    Profesi
-                                                </div>
-                                                <div class="col-md-8">
-                                                    : {{ $dataclient->Profesi->nama }}
-                                                </div>
-                                            </div>
-                                        @else
-                                            <div class="row mb-2">
-                                                <div class="col-md-4">
-                                                    Profesi
-                                                </div>
-                                                <div class="col-md-8">
-                                                    : {{ $dataclient->profesi_lain }}
-                                                </div>
-                                            </div>
-                                        @endif
 
-                                        @if ($dataclient->pekerjaan !== '4')
-                                            <div class="row mb-2">
-                                                <div class="col-md-4">
-                                                    Pekerjaan
-                                                </div>
-                                                <div class="col-md-8">
-                                                    : {{ $dataclient->Pekerjaan->nama }}
-                                                </div>
-                                            </div>
-                                            <div class="row mb-2">
-                                                <div class="col-md-4">
-                                                    Tempat Kerja
-                                                </div>
-                                                <div class="col-md-8">
-                                                    : {{ $dataclient->tempat_kerja }}
-                                                </div>
-                                            </div>
-                                        @else
-                                            <div class="row mb-2">
-                                                <div class="col-md-4">
-                                                    Pekerjaan
-                                                </div>
-                                                <div class="col-md-8">
-                                                    : {{ $dataclient->pekerjaan }}
-                                                </div>
-                                            </div>
-                                        @endif
-
-
+                                        {{-- <div class="text-center mt-2">
+                                            <h5 class="mb-1">Anda telah memiliki Kartu Tanda Anggota Elektronik</h5>
+                                            <h5>(E-KTA) Pemuda Muhammadiyah Wonosobo</h5>
+                                        </div> --}}
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -870,12 +906,12 @@
                         <!-- Invoices -->
                         <div class="row">
                             <div class="col-lg-4">
-                                <div class="card border-left-3 border-left-danger rounded-left-0">
+                                <div class="card border-left-3 border-left-warning rounded-left-0">
                                     <div class="card-body">
                                         <div class="d-sm-flex align-item-sm-center flex-sm-nowrap">
                                             <div>
                                                 <h3 class="font-weight-semibold"><span
-                                                        class="badge badge-danger">Riwayat Pendidikan</span></h3>
+                                                        class="badge badge-warning">Riwayat Pendidikan</span></h3>
                                                 <table class="table">
                                                     <tbody>
                                                         @foreach ($riwayat_pendidikan as $value)
